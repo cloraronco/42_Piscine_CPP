@@ -1,0 +1,5 @@
+
+En CPP, la difference entre une STRUC et une CLASS :
+
+STRUC : par defaut PUBLIC
+CLASS : par defaut PRIVATE
