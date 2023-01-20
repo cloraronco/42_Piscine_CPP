@@ -6,7 +6,7 @@
 /*   By: clora-ro <clora-ro@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:36:43 by clora-ro          #+#    #+#             */
-/*   Updated: 2023/01/18 09:25:33 by clora-ro         ###   ########lyon.fr   */
+/*   Updated: 2023/01/20 14:21:41 by clora-ro         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ int	main() {
 	std::string input;
 	int	nb = 0;
 
-	std::cout << "My Awesome PhoneBook : ";
+	std::cout << "My Awesome PhoneBook : " << std::endl;
 	while (1)
 	{
 		getline(std::cin, input);
+		if (std::cin.eof())
+			exit (1);
 		if (input == "ADD")
 		{
 			instance.add();

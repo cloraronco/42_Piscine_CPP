@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clora-ro <clora-ro@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:26:47 by clora-ro          #+#    #+#             */
-/*   Updated: 2023/01/18 09:25:25 by clora-ro         ###   ########lyon.fr   */
+/*   Updated: 2023/01/20 14:41:36 by clora-ro         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ PhoneBook::PhoneBook(void) {
 	return;
 }
 
-void	PhoneBook::add() {
+std::string	PhoneBook::add() {
  
 	std::string input;
 
@@ -26,34 +26,36 @@ void	PhoneBook::add() {
 	getline(std::cin, input);
 	if (std::cin.eof())
 		exit (1);
-	this->contact[nb].setFirstname(input);
+	this->_contact[nb].setFirstname(input);
 
 	std::cout << "LAST NAME : ";
 	getline(std::cin, input);
 	if (std::cin.eof())
 		exit (1);
-	this->contact[nb].setLastname(input);
+	this->_contact[nb].setLastname(input);
 
 	std::cout << "NICK NAME : ";
 	getline(std::cin, input);
 	if (std::cin.eof())
 		exit (1);
-	this->contact[nb].setNickname(input);
+	this->_contact[nb].setNickname(input);
 
 	std::cout << "PHONE NUMBER : ";
 	getline(std::cin, input);
 	if (std::cin.eof())
 		exit (1);
-	this->contact[nb].setPhoneNumber(input);
+	this->_contact[nb].setPhoneNumber(input);
 
 	std::cout << "DARKEST SECRET : ";
 	getline(std::cin, input);
 	if (std::cin.eof())
 		exit (1);
-	this->contact[nb].setDarkestSecret(input);
+	this->_contact[nb].setDarkestSecret(input);
 
-	std::cout << "\nNew contact " << this->contact[nb].getFirstname() << " added !\n" << std::endl;
+	std::cout << "\nNew contact " << this->_contact[nb].getFirstname() << " added !\n" << std::endl;
 	nb = (nb + 1) % 8;
+
+	return (input);
 }
 
 
@@ -64,7 +66,7 @@ std::string	ReplaceByPoint(std::string string)
 	return (string);
 }
 
-void	PhoneBook::showcontact(){
+void		PhoneBook::showcontact(){
 	
 	std::string	index;
 	int			validIndex = 0;
@@ -77,9 +79,9 @@ void	PhoneBook::showcontact(){
 		<< "|" << std::endl;
 	for (int i = 0; i < this->nb; i++)
 	{
-		std::cout << std::setw(10) << i << "|" << std::setw(10) << ReplaceByPoint(this->contact[i].getFirstname())
-			<< "|" << std::setw(10) << ReplaceByPoint(this->contact[i].getLastname())
-			<< "|" << std::setw(10) << ReplaceByPoint(this->contact[i].getNickname())
+		std::cout << std::setw(10) << i + 1 << "|" << std::setw(10) << ReplaceByPoint(this->_contact[i].getFirstname())
+			<< "|" << std::setw(10) << ReplaceByPoint(this->_contact[i].getLastname())
+			<< "|" << std::setw(10) << ReplaceByPoint(this->_contact[i].getNickname())
 			<< "|" << std::endl;
 	}
 	while (!validIndex)
@@ -89,16 +91,16 @@ void	PhoneBook::showcontact(){
 		if (std::cin.eof())
 			exit (1);
 		if (index.length() < 0 || index.length() > 1 || \
-		this->contact[atoi(index.c_str())].getFirstname().length() == 0)
+		this->_contact[atoi(index.c_str()) - 1].getFirstname().length() == 0)
 			std::cout << "Wrong index" << std::endl;
 		else
 			validIndex = 1;
 	}
-	std::cout << std::endl << "First Name: " << contact[atoi(index.c_str())].getFirstname() << std::endl;
-	std::cout << "Last Name: " << contact[atoi(index.c_str())].getLastname() << std::endl;
-	std::cout << "NickName: " << contact[atoi(index.c_str())].getNickname() << std::endl;
-	std::cout << "Phone Number: " << contact[atoi(index.c_str())].getPhoneNumber() << std::endl << std::endl;
-	std::cout << "Darkest Secret: "<< contact[atoi(index.c_str())].getDarkestSecret() << std::endl;
+	std::cout << std::endl << "First Name: " << _contact[atoi(index.c_str()) - 1].getFirstname() << std::endl;
+	std::cout << "Last Name: " << _contact[atoi(index.c_str()) - 1].getLastname() << std::endl;
+	std::cout << "NickName: " << _contact[atoi(index.c_str()) - 1].getNickname() << std::endl;
+	std::cout << "Phone Number: " << _contact[atoi(index.c_str()) - 1].getPhoneNumber() << std::endl << std::endl;
+	std::cout << "Darkest Secret: "<< _contact[atoi(index.c_str()) - 1].getDarkestSecret() << std::endl;
 
 }
 

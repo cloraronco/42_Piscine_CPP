@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clora-ro <clora-ro@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 14:22:17 by clora-ro          #+#    #+#             */
-/*   Updated: 2023/01/18 09:24:04 by clora-ro         ###   ########lyon.fr   */
+/*   Updated: 2023/01/20 14:14:33 by clora-ro         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ public:
 	PhoneBook(void);
 	~PhoneBook(void);
 
-	void	add();
-	void 	showcontact();
+	std::string	add();
+	void		showcontact();
 
 private:
 
-	Contact	contact[8];
+	Contact	_contact[8];
 
 };
