@@ -6,7 +6,7 @@
 #    By: clora-ro <clora-ro@student.42lyon.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/13 13:57:32 by clora-ro          #+#    #+#              #
-#    Updated: 2023/01/18 15:39:25 by clora-ro         ###   ########lyon.fr    #
+#    Updated: 2023/01/25 11:23:55 by clora-ro         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC					= c++
 
 CC_FLAGS			= -Wall -Wextra -Werror -std=c++98
 
-NAME				= This_is_Brain
+NAME				= Sed
 
 OBJS_DIR			= objs
 
@@ -45,6 +45,6 @@ fclean: clean
 
 re: fclean all
 
-.PHONY:	all clean fclean re
+.PHONY: all clean fclean re
 
 -include $(DEPENDENCIES)%
