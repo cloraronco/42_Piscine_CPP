@@ -6,7 +6,7 @@
 /*   By: clora-ro <clora-ro@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:47:27 by clora-ro          #+#    #+#             */
-/*   Updated: 2023/01/25 13:49:40 by clora-ro         ###   ########lyon.fr   */
+/*   Updated: 2023/01/25 14:43:42 by clora-ro         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,11 @@ class	Fixed {
 
 public:
 	Fixed(void);
+	Fixed(void);
 	~Fixed(void);
 
+	int		getRawBirs(void) const;
+	void	setRawBirs(int const raw);
 
 private:
 
