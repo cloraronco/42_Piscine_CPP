@@ -16,14 +16,20 @@
 class	Fixed {
 
 public:
+
 	Fixed(void);
-	Fixed(void);
+	Fixed(Fixed const& cpy);
 	~Fixed(void);
 
-	int		getRawBirs(void) const;
-	void	setRawBirs(int const raw);
+	int		getRawBits(void) const;
+	void	setRawBits(int const raw);
+	
+	Fixed	&operator=(Fixed const& obj);
 
 private:
+
+	int					_n;
+	int static const	_bits = 8;
 
 
 };
