@@ -1,9 +1,8 @@
-touch Makefile
-echo "CC					= c++
+CC					= c++
 
-CC_FLAGS			= -Wall -Werror -Wextra -std=c++98
+CC_FLAGS			= -Wall -Wextra -Werror -std=c++98
 
-NAME				= Encore_plus_de_cerveaux_!
+NAME				= ClapTrap
 
 OBJS_DIR			= srcs/objs
 
@@ -16,10 +15,10 @@ OBJECTS_PREFIXED	= $(addprefix $(OBJS_DIR)/, $(OBJS))
 OBJS				= $(SRCS:.cpp=.o)
 
 SRCS				=	main.cpp \
-						Zombie.cpp \
-						zombieHorde.cpp
+						ClapTrap.cpp
 
-INC					=	$(INC_DIR)Zombie.hpp
+INC					=	$(INC_DIR)ClapTrap.hpp
+							
 
 all: $(NAME)
 
@@ -40,5 +39,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re" >> Makefile
-# mkdir srcs includes
+.PHONY: all clean fclean re
