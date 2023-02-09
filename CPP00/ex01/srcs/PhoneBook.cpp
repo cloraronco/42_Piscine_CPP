@@ -23,36 +23,36 @@ std::string	PhoneBook::add() {
 	std::string input;
 
 	std::cout << "FIRST NAME : ";
-	getline(std::cin, input);
-	if (std::cin.eof())
-		exit (1);
+	std::getline(std::cin, input);
+	if (input == "")
+		std::exit(1);
 	this->_contact[nb].setFirstname(input);
 
 	std::cout << "LAST NAME : ";
 	getline(std::cin, input);
-	if (std::cin.eof())
-		exit (1);
+	if (input == "")
+		std::exit(1);
 	this->_contact[nb].setLastname(input);
 
 	std::cout << "NICK NAME : ";
 	getline(std::cin, input);
-	if (std::cin.eof())
-		exit (1);
+	if (input == "")
+		std::exit(1);
 	this->_contact[nb].setNickname(input);
 
 	std::cout << "PHONE NUMBER : ";
 	getline(std::cin, input);
-	if (std::cin.eof())
-		exit (1);
+	if (input == "")
+		std::exit(1);
 	this->_contact[nb].setPhoneNumber(input);
 
 	std::cout << "DARKEST SECRET : ";
 	getline(std::cin, input);
-	if (std::cin.eof())
-		exit (1);
+	if (input == "")
+		std::exit(1);
 	this->_contact[nb].setDarkestSecret(input);
 
-	std::cout << "\nNew contact " << this->_contact[nb].getFirstname() << " added !\n" << std::endl;
+	std::cout << ">>> New contact " << this->_contact[nb].getFirstname() << " added <<<\n" << std::endl;
 	nb = (nb + 1) % 8;
 
 	return (input);
@@ -89,8 +89,8 @@ void		PhoneBook::showcontact(){
 		std::cout << "Please enter the contact's index to see more details:\n> ";
 		getline(std::cin, index);
 		if (std::cin.eof())
-			exit (1);
-		if (index.length() < 0 || index.length() > 1 || \
+			std::exit(1);
+		if (!isdigit(index[0]) || index == "0" || index.length() == 0 || index.length() > 1 || \
 		this->_contact[atoi(index.c_str()) - 1].getFirstname().length() == 0)
 			std::cout << "Wrong index" << std::endl;
 		else
@@ -101,9 +101,7 @@ void		PhoneBook::showcontact(){
 	std::cout << "NickName: " << _contact[atoi(index.c_str()) - 1].getNickname() << std::endl;
 	std::cout << "Phone Number: " << _contact[atoi(index.c_str()) - 1].getPhoneNumber() << std::endl << std::endl;
 	std::cout << "Darkest Secret: "<< _contact[atoi(index.c_str()) - 1].getDarkestSecret() << std::endl;
-
 }
-
 
 PhoneBook::~PhoneBook(void) {
 

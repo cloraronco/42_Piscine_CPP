@@ -19,11 +19,13 @@ int	main() {
 	int	nb = 0;
 
 	std::cout << "My Awesome PhoneBook : " << std::endl;
+	std::cout << "Please, type ADD or SEARCH or EXIT to continue." << std::endl;
+
 	while (1)
 	{
 		getline(std::cin, input);
 		if (std::cin.eof())
-			exit (1);
+			std::exit(1);
 		if (input == "ADD")
 		{
 			instance.add();
@@ -33,7 +35,7 @@ int	main() {
 			instance.showcontact();
 		else if (input == "EXIT")
 			break;
-		std::cout << "My Awesome Phonebook : " << std::endl;
+		std::cout << ">>> My Awesome Phonebook : " << std::endl;
 	}
 	return (0);
 }

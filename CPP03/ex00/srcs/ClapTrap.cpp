@@ -17,3 +17,9 @@ ClapTrap::ClapTrap(ClapTrap const& cpy) {
 ClapTrap::~ClapTrap(void) {
 	std::cout << "Destructor called" << std::endl;
 }
+
+
+
+void	ClapTrap::attack(const std::string& target) {}
+void	ClapTrap::takeDamage(unsigned int amount) {}
+void	ClapTrap::beRepaired(unsigned int amount) {}
