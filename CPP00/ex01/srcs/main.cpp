@@ -11,18 +11,24 @@
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include <stdio.h>
 
-int	main() {
+int	main(int ac, char **av) {
 
+	(void)av;
 	PhoneBook instance;
 	std::string input;
 	int	nb = 0;
+	// int	check = 0;
 
-	std::cout << "My Awesome PhoneBook : " << std::endl;
-	std::cout << "Please, type ADD or SEARCH or EXIT to continue." << std::endl;
-
+	if (ac > 1)
+		return (0);
+	nb = (1 + 1) % 8;
+	printf("nb : %d \n", nb);
 	while (1)
 	{
+		std::cout << "Please, type ADD or SEARCH or EXIT to continue." << std::endl;
+		std::cout << ">>> My Awesome Phonebook : " << std::endl;
 		getline(std::cin, input);
 		if (std::cin.eof())
 			std::exit(1);
@@ -30,12 +36,16 @@ int	main() {
 		{
 			instance.add();
 			nb++;
+			if (nb > 8)
+			{
+				nb = 1;
+				// check = 1;
+			}
 		}
-		else if (input == "SEARCH" && nb > 0)
+		else if (input == "SEARCH" && (nb > 0))
 			instance.showcontact();
 		else if (input == "EXIT")
 			break;
-		std::cout << ">>> My Awesome Phonebook : " << std::endl;
 	}
 	return (0);
 }

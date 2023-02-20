@@ -101,8 +101,9 @@ void		PhoneBook::showcontact(){
 	std::cout << "NickName: " << _contact[atoi(index.c_str()) - 1].getNickname() << std::endl;
 	std::cout << "Phone Number: " << _contact[atoi(index.c_str()) - 1].getPhoneNumber() << std::endl << std::endl;
 	std::cout << "Darkest Secret: "<< _contact[atoi(index.c_str()) - 1].getDarkestSecret() << std::endl;
-}
-
+	std::cout << "_______________________________________________" << std::endl << std::endl;
+} 
+  
 PhoneBook::~PhoneBook(void) {
 
 	return;
