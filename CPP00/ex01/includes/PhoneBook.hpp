@@ -13,22 +13,23 @@
 #pragma once
 #include <iostream>
 #include <iomanip>
+#include <ctype.h>
 #include "Contact.hpp"
 
 class PhoneBook {
 
 public:
 
-	int		nb;
 
 	PhoneBook(void);
 	~PhoneBook(void);
 
-	std::string	add();
-	void		showcontact();
+	void	ADD();
+	void	SEARCH();
 
 private:
 
 	Contact	_contact[8];
+	int		_nb;
 
 };

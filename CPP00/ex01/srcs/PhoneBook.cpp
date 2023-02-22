@@ -11,78 +11,68 @@
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include <stdio.h>
 
-PhoneBook::PhoneBook(void) {
+PhoneBook::PhoneBook(void) : _nb(-1) {}
 
-	nb = 0;
-	return;
+PhoneBook::~PhoneBook(void) {}
+
+std::string	GetString(const std::string& msg)
+{
+	std::string	string;
+
+	while (string.length() == 0)
+	{
+		std::cout <<"Type the " << msg << ": ";
+		getline(std::cin, string);
+		if (std::cin.eof())
+			exit (1);
+		// if (input == "")
+		// 	std::exit(1);
+	}
+	return (string);
 }
-
-std::string	PhoneBook::add() {
- 
-	std::string input;
-
-	std::cout << "FIRST NAME : ";
-	std::getline(std::cin, input);
-	if (input == "")
-		std::exit(1);
-	this->_contact[nb].setFirstname(input);
-
-	std::cout << "LAST NAME : ";
-	getline(std::cin, input);
-	if (input == "")
-		std::exit(1);
-	this->_contact[nb].setLastname(input);
-
-	std::cout << "NICK NAME : ";
-	getline(std::cin, input);
-	if (input == "")
-		std::exit(1);
-	this->_contact[nb].setNickname(input);
-
-	std::cout << "PHONE NUMBER : ";
-	getline(std::cin, input);
-	if (input == "")
-		std::exit(1);
-	this->_contact[nb].setPhoneNumber(input);
-
-	std::cout << "DARKEST SECRET : ";
-	getline(std::cin, input);
-	if (input == "")
-		std::exit(1);
-	this->_contact[nb].setDarkestSecret(input);
-
-	std::cout << ">>> New contact " << this->_contact[nb].getFirstname() << " added <<<\n" << std::endl;
-	nb = (nb + 1) % 8;
-
-	return (input);
-}
-
 
 std::string	ReplaceByPoint(std::string string)
 {
-	if (string.length() > 9)
+	if (string.length() > 10)
 		string.replace(9, string.npos, ".");
 	return (string);
 }
 
-void		PhoneBook::showcontact(){
-	
+void	PhoneBook::ADD() 
+{
+	_nb++;
+	if (_nb > 7)
+		_nb = 0;
+	_contact[_nb].setFirstname(GetString("First Name"));
+	_contact[_nb].setLastname(GetString("Last Name"));
+	_contact[_nb].setNickname(GetString("Nickname"));
+	_contact[_nb].setPhoneNumber(GetString("Phone Number"));
+	_contact[_nb].setDarkestSecret(GetString("Darkest Secret"));
+
+	std::cout << ">>> New contact " << _contact[_nb].getFirstname() << " added <<<\n" << std::endl;
+}
+
+
+void		PhoneBook::SEARCH()
+{	
 	std::string	index;
 	int			validIndex = 0;
+	int			i = 0;
 
-	// setw(10) = sets the width to 10 characters
 	std::cout << std::endl;
 	std::cout << std::setw(10) << "Index" << "|" << std::setw(10) << "First Name"
 		<< "|" << std::setw(10) << "Last Name"
 		<< "|" << std::setw(10) << "Nickname"
 		<< "|" << std::endl;
-	for (int i = 0; i < this->nb; i++)
+	while (i < 8 && _contact[i].getFirstname().length() != 0)
 	{
-		std::cout << std::setw(10) << i + 1 << "|" << std::setw(10) << ReplaceByPoint(this->_contact[i].getFirstname())
-			<< "|" << std::setw(10) << ReplaceByPoint(this->_contact[i].getLastname())
-			<< "|" << std::setw(10) << ReplaceByPoint(this->_contact[i].getNickname())
+		std::cout << std::setw(10) << i + 1 << "|" << std::setw(10) << ReplaceByPoint(_contact[i].getFirstname())
+			<< "|" << std::setw(10) << ReplaceByPoint(_contact[i].getLastname())
+			<< "|" << std::setw(10) << ReplaceByPoint(_contact[i].getNickname())
 			<< "|" << std::endl;
+		i++;
 	}
 	while (!validIndex)
 	{
@@ -90,9 +80,9 @@ void		PhoneBook::showcontact(){
 		getline(std::cin, index);
 		if (std::cin.eof())
 			std::exit(1);
-		if (!isdigit(index[0]) || index == "0" || index.length() == 0 || index.length() > 1 || \
-		this->_contact[atoi(index.c_str()) - 1].getFirstname().length() == 0)
-			std::cout << "Wrong index" << std::endl;
+		if (!isdigit(index[0]) || index == "0" || index == "9" || index.length() == 0 || index.length() > 1 || \
+		_contact[atoi(index.c_str()) - 1].getFirstname().length() == 0)
+			std::cout << "Wrong index." << std::endl;
 		else
 			validIndex = 1;
 	}
@@ -104,7 +94,3 @@ void		PhoneBook::showcontact(){
 	std::cout << "_______________________________________________" << std::endl << std::endl;
 } 
   
-PhoneBook::~PhoneBook(void) {
-
-	return;
-}

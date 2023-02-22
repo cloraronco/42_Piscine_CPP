@@ -13,18 +13,13 @@
 #include "PhoneBook.hpp"
 #include <stdio.h>
 
-int	main(int ac, char **av) {
+int	main(void)
+{
+	PhoneBook	instance;
+	std::string	input;
+	int			nb;
 
-	(void)av;
-	PhoneBook instance;
-	std::string input;
-	int	nb = 0;
-	// int	check = 0;
-
-	if (ac > 1)
-		return (0);
-	nb = (1 + 1) % 8;
-	printf("nb : %d \n", nb);
+	nb = 0;
 	while (1)
 	{
 		std::cout << "Please, type ADD or SEARCH or EXIT to continue." << std::endl;
@@ -34,17 +29,12 @@ int	main(int ac, char **av) {
 			std::exit(1);
 		if (input == "ADD")
 		{
-			instance.add();
+			instance.ADD();
 			nb++;
-			if (nb > 8)
-			{
-				nb = 1;
-				// check = 1;
-			}
 		}
-		else if (input == "SEARCH" && (nb > 0))
-			instance.showcontact();
-		else if (input == "EXIT")
+		else if (!input.compare("SEARCH") && nb)
+			instance.SEARCH();
+		else if (!input.compare("EXIT"))
 			break;
 	}
 	return (0);
