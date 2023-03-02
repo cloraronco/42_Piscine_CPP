@@ -14,11 +14,11 @@
 
 int	main() {
 
-	Harl	pain;
+	Harl	Karen;
 
-	pain.complain("debug");
-	pain.complain("info");
-	pain.complain("warning");
-	pain.complain("error");
+	Karen.complain("debug");
+	Karen.complain("info");
+	Karen.complain("warning");
+	Karen.complain("error");
 	return (0);
 }
