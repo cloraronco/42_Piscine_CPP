@@ -26,7 +26,7 @@ int	main(int ac, char **av) {
 			{
 				line.erase(pos, s1.length());
 				line.insert(pos, av[3]);
-				pos = line.find(av[2], pos + s1.length());
+				pos = line.find(av[2], pos + s2.length());
 			}
 			new_file << line << std::endl;
 		}

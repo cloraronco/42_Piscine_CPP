@@ -17,7 +17,7 @@ int	main(void) {
 	Zombie*	Hell;
 
 	Hell = newZombie("Jim");
-	Hell->announce();
+	// Hell->announce();
 	randomChump("Bob");
 	delete (Hell);
 	return (0);

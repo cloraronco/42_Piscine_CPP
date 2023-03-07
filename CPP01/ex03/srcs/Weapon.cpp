@@ -17,7 +17,7 @@ Weapon::Weapon(std::string type): _type(type) {}
 Weapon::~Weapon(void) {}
 
 
-std::string	Weapon::getType() const {
+std::string const &	Weapon::getType() const {
 
 	return (_type);
 }
