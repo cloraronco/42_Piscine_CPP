@@ -16,7 +16,7 @@ int	main(void) {
 
 	Zombie*	bigHell;
 	Zombie* smallHell;
-	int	nb_bigHell = 6;
+	int	nb_bigHell = 5;
 	int	nb_smallHell = 3;
 
 	bigHell = zombieHorde(nb_bigHell, "Member of bigHell");

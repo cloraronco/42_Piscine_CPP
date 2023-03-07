@@ -32,7 +32,7 @@ $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)
 
 $(OBJS_DIR)/%.o : %.cpp Makefile | $(OBJS_DIR)
-	$(CC) $(CC_FLAGS) -MMD -c $< -o $@
+	$(CC) $(CC_FLAGS) -c $< -o $@
 
 $(NAME): $(OBJECTS_PREFIXED)
 	$(CC) -o $(NAME) $(OBJECTS_PREFIXED) $(CC_FLAGS)

@@ -22,8 +22,6 @@ OBJECTS_PREFIXED	= $(addprefix $(OBJS_DIR)/, $(OBJS))
 
 OBJS				= $(SRCS:.cpp=.o)
 
-DEPENDENCIES		= $(OBJECTS_PREFIXED:.o=.d)
-
 SRCS				= main.cpp
 	
 all: $(NAME)
@@ -46,5 +44,3 @@ fclean: clean
 re: fclean all
 
 .PHONY:	all clean fclean re
-
--include $(DEPENDENCIES)%
