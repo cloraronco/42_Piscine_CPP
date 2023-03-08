@@ -31,5 +31,4 @@ private:
 	int					_n;
 	int static const	_bits = 8;
 
-
 };
