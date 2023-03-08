@@ -10,11 +10,11 @@ void	replace(char *av1, char *av2, char *av3)
 	std::string		s1(av2);
 	std::string		s2(av3);
 	std::ifstream	file(av1);
-	std::ofstream	new_file((std::string(av1) + ".replace").data());
 
-	if (file && new_file)
+	if (file)
 	{
-		while (getline(file, line))
+		std::ofstream	new_file((std::string(av1) + ".replace").data());
+		while (getline(file, line) && new_file)
 		{
 			pos = line.find(av2);
 			while (pos != std::string::npos)
@@ -25,20 +25,19 @@ void	replace(char *av1, char *av2, char *av3)
 			}
 			new_file << line << std::endl;
 		}
+		new_file.close();
 	}
 	else
 	{
 		file.close();
-		new_file.close();
 		std::cout << "Files stream error" << std::endl;
 		exit(EXIT_FAILURE);
 	}
 	file.close();
-	new_file.close();
 }
 
-int	main(int ac, char **av) {
-
+int	main(int ac, char **av)
+{
 	if (ac != 4)
 	{
 		std::cout << "You must have three inputs :  <filename>  <s1>  <s2> ." << std::endl;
