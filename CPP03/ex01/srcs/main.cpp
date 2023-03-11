@@ -1,16 +1,20 @@
-#include "../includes/ClapTrap.hpp"
+#include "../includes/ScavTrap.hpp"
 
 /*____________Not enough hitPoints___________*/
 
 int main(void)
 {
 	ClapTrap	Emmanuel("Macron");
+	ScavTrap	JeanLuc("Melenchon");
 
 	Emmanuel.setDamage(3);
+	Emmanuel.attack("Melenchon");
+	JeanLuc.guardGate();
+	JeanLuc.attack("Macron");
 	Emmanuel.takeDamage(4);
-	Emmanuel.beRepaired(2);
-	Emmanuel.takeDamage(4);
-	Emmanuel.takeDamage(4);
+	JeanLuc.beRepaired(2);
+	JeanLuc.takeDamage(8);
+	JeanLuc.guardGate();
 	return (0);
 }
 
