@@ -14,7 +14,7 @@ class ClapTrap
 		ClapTrap	&operator=(const ClapTrap &cpy);
 
 		void	setDamage(int nb);
-		int		getDamage(void);
+		int		getDamage(void) const;
 
 		void	attack(const std::string& target);
 		void	takeDamage(unsigned int amount);

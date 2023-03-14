@@ -46,7 +46,7 @@ private:
 	int					_n;
 	int static const	_bits = 8;
 
-
+  
 };
 
 std::ostream	&operator<<(std::ostream &o, Fixed const &cpy);

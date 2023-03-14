@@ -68,14 +68,17 @@ void	Fixed::setRawBits(int const raw) {
 /*_________________________________________________________________*/
 
 float	Fixed::toFloat(void) const {
-	return (_n / (float) (1 << this->_bits));
+	//return (_n / (float) (1 << this->_bits));
+	return (_n / (float) (256));
 }
 
 int		Fixed::toInt(void) const
 {
 	int	convertedFixed;
 
-	convertedFixed = _n >> _bits;
+
+	// convertedFixed = _n >> _bits;
+	convertedFixed = _n / 256;
 	return (convertedFixed);
 }
 

@@ -2,41 +2,47 @@
 
 /*____________Not enough hitPoints___________*/
 
-int main(void)
-{
-	ClapTrap	Emmanuel("Macron");
+// int main(void)
+// {
+// 	ClapTrap	Player("Macron");
+// 	ClapTrap	Melenchon(Player);
+	
+// 	ClapTrap	NoName;
 
-	Emmanuel.setDamage(3);
-	Emmanuel.takeDamage(4);
-	Emmanuel.beRepaired(2);
-	Emmanuel.takeDamage(4);
-	Emmanuel.takeDamage(4);
-	return (0);
-}
+// 	Player.setDamage(3);
+// 	Player.takeDamage(4);
+// 	Player.beRepaired(2);
+// 	Player.takeDamage(4);
+// 	Player.takeDamage(4);
+
+// 	NoName.takeDamage(2);
+
+// 	return (0);
+// }
 
 
 /*___________Not enough energyPoints__________*/
 
-// int main(void)
-// {
-// 	ClapTrap	Player("Macron");
+int main(void)
+{
+	ClapTrap	Player("Macron");
 
-// 	Player.setDamage(3);
-// 	Player.attack("Melenchon");
-// 	Player.attack("Melenchon");
-// 	Player.takeDamage(4);
-// 	Player.beRepaired(2);
-// 	Player.attack("Melenchon");
-// 	Player.attack("Melenchon");
-// 	Player.attack("Melenchon");
-// 	Player.attack("Melenchon");
-// 	Player.attack("Melenchon");
-// 	Player.attack("Melenchon");
-// 	Player.attack("Melenchon");
-// 	Player.attack("Melenchon");
-// 	Player.beRepaired(2);
-// 	return (0);
-// }
+	Player.setDamage(3);
+	Player.attack("Melenchon");
+	Player.attack("Melenchon");
+	Player.takeDamage(4);
+	Player.beRepaired(2);
+	Player.attack("Melenchon");
+	Player.attack("Melenchon");
+	Player.attack("Melenchon");
+	Player.attack("Melenchon");
+	Player.attack("Melenchon");
+	Player.attack("Melenchon");
+	Player.attack("Melenchon");
+	Player.attack("Melenchon");
+	Player.beRepaired(2);
+	return (0);
+}
 
 /*_____________________Dead___________________*/
 

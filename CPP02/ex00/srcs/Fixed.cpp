@@ -25,6 +25,8 @@ Fixed::Fixed(Fixed const& cpy) {
 	return ;
 }
 
+
+
 Fixed::~Fixed(void) {
 
 	std::cout << "Destructor called" << std::endl;
@@ -37,6 +39,8 @@ Fixed &Fixed::operator=(Fixed const& cpy) {
 	_n = cpy.getRawBits();
 	return (*this);
 }
+
+
 
 
 int	Fixed::getRawBits(void) const {
