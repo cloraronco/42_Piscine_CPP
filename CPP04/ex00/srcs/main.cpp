@@ -9,8 +9,8 @@ int main()
 	const Animal* i = new Cat();
 
 	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
 	i->makeSound();
+	std::cout << i->getType() << " " << std::endl;
 	j->makeSound();
 	meta->makeSound();
 

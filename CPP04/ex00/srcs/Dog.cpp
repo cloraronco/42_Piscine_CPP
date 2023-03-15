@@ -3,24 +3,24 @@
 Dog::Dog(void)
 {
 	_type = "Dog";
-	std::cout << "Dog default constructor called" << std::endl;
+	std::cout << GREY << "Dog default constructor called" << RESET << std::endl;
 }
 
 Dog::Dog(std::string name)
 {
 	_type = name;
-	std::cout << "Dog name constructor called" << std::endl;
+	std::cout << GREY << "Dog name constructor called" << RESET << std::endl;
 }
 
 Dog::Dog(const Dog &cpy): Animal()
 {
 	*this = cpy;
-	std::cout << "Dog copy constructor called" << std::endl;
+	std::cout << GREY << "Dog copy constructor called" << RESET << std::endl;
 }
 
 Dog::~Dog(void)
 {
-	std::cout << "Dog destructor called" << std::endl;
+	std::cout << GREY << "Dog destructor called" << RESET << std::endl;
 }
 
 Dog	&Dog::operator=(const Dog &cpy)
@@ -37,5 +37,5 @@ std::string	Dog::getType(void) const
 
 void	Dog::makeSound(void) const
 {
-	std::cout << "BARK BARK" << std::endl;
+	std::cout << PINK << "BARK BARK" << RESET << std::endl;
 }

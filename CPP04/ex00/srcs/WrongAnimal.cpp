@@ -2,18 +2,18 @@
 
 WrongAnimal::WrongAnimal(void): _type("WrongAnimal")
 {
-	std::cout << "WrongAnimal constructor called" << std::endl;
+	std::cout << GREY << "WrongAnimal constructor called" << RESET << std::endl;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal &cpy)
 {
 	*this = cpy;
-	std::cout << "WrongAnimal copy constructor called" << std::endl;
+	std::cout << GREY << "WrongAnimal copy constructor called" << RESET << std::endl;
 }
 
 WrongAnimal::~WrongAnimal(void)
 {
-	std::cout << "WrongAnimal destructor called" << std::endl;
+	std::cout << GREY << "WrongAnimal destructor called" << RESET << std::endl;
 }
 
 WrongAnimal	&WrongAnimal::operator=(const WrongAnimal &cpy)
@@ -29,5 +29,5 @@ std::string	WrongAnimal::getType() const
 
 void	WrongAnimal::makeSound() const
 {
-	std::cout << "A WrongAnimal makes noise." << std::endl;
+	std::cout << RED << "A WrongAnimal makes noise." << RESET << std::endl;
 }

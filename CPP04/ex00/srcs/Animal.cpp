@@ -2,18 +2,18 @@
 
 Animal::Animal(void): _type("Animal")
 {
-	std::cout << "Animal constructor called" << std::endl;
+	std::cout << GREY << "Animal constructor called" << RESET << std::endl;
 }
 
 Animal::Animal(const Animal &cpy)
 {
 	*this = cpy;
-	std::cout << "Animal copy constructor called" << std::endl;
+	std::cout << GREY << "Animal copy constructor called" << RESET << std::endl;
 }
 
 Animal::~Animal(void)
 {
-	std::cout << "Animal destructor called" << std::endl;
+	std::cout << GREY << "Animal destructor called" << RESET << std::endl;
 }
 
 Animal	&Animal::operator=(const Animal &cpy)
@@ -29,5 +29,5 @@ std::string	Animal::getType() const
 
 void	Animal::makeSound() const
 {
-	std::cout << "An animal makes noise." << std::endl;
+	std::cout << BLUE << "An animal makes noise." << RESET << std::endl;
 }
