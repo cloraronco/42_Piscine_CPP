@@ -9,7 +9,7 @@ int main(void)
 
 	Player1.setDamage(3);
 	Player1.attack("Melenchon");
-	Player1.takeDamage(4);
+	Player1.takeDamage(15);
 
 
 	ScavTrap	JeanLuc("Melenchon");
@@ -18,7 +18,7 @@ int main(void)
 	Player2.guardGate();
 	Player2.attack("Macron");
 	Player2.beRepaired(2);
-	Player2.takeDamage(8);
+	Player2.takeDamage(105);
 	Player2.guardGate();
 
 

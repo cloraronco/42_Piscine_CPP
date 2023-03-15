@@ -58,10 +58,15 @@ void	ScavTrap::attack(const std::string& target)
 
 void	ScavTrap::guardGate()
 {
-	if (!_gateKeeper)
+	if (!_gateKeeper && _energyPoints > 0)
 	{
 		_gateKeeper = 1;
 		std::cout << YELLOW << _name << " : Gate keeper mode activated !"<< RESET << std::endl;
+	}
+	else if (!_gateKeeper && _energyPoints < 1)
+	{
+		std::cout << _name << " has no enough energy points to activate the Gate Keeper mode." << std::endl;
+
 	}
 	else
 	{
