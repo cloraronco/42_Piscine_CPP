@@ -5,16 +5,29 @@
 int main(void)
 {
 	ClapTrap	Emmanuel("Macron");
-	ScavTrap	JeanLuc("Melenchon");
+	ClapTrap	Player1 = Emmanuel;
 
-	Emmanuel.setDamage(3);
-	Emmanuel.attack("Melenchon");
-	JeanLuc.guardGate();
-	JeanLuc.attack("Macron");
-	Emmanuel.takeDamage(4);
-	JeanLuc.beRepaired(2);
-	JeanLuc.takeDamage(8);
-	JeanLuc.guardGate();
+	Player1.setDamage(3);
+	Player1.attack("Melenchon");
+	Player1.takeDamage(4);
+
+
+	ScavTrap	JeanLuc("Melenchon");
+	ScavTrap	Player2 = JeanLuc;
+
+	Player2.guardGate();
+	Player2.attack("Macron");
+	Player2.beRepaired(2);
+	Player2.takeDamage(8);
+	Player2.guardGate();
+
+
+	ClapTrap	NoName1;
+	ScavTrap	NoName2;
+
+	NoName1.takeDamage(2);
+	NoName2.takeDamage(5);
+
 	return (0);
 }
 
@@ -23,22 +36,18 @@ int main(void)
 
 // int main(void)
 // {
-// 	ClapTrap	Player("Macron");
+// 	ScavTrap	Emmanuel("Macron");
+// 	ScavTrap	Player1 = Emmanuel;
 
-// 	Player.setDamage(3);
-// 	Player.attack("Melenchon");
-// 	Player.attack("Melenchon");
-// 	Player.takeDamage(4);
-// 	Player.beRepaired(2);
-// 	Player.attack("Melenchon");
-// 	Player.attack("Melenchon");
-// 	Player.attack("Melenchon");
-// 	Player.attack("Melenchon");
-// 	Player.attack("Melenchon");
-// 	Player.attack("Melenchon");
-// 	Player.attack("Melenchon");
-// 	Player.attack("Melenchon");
-// 	Player.beRepaired(2);
+// 	Player1.setDamage(3);
+// 	Player1.attack("Melenchon");
+// 	Player1.attack("Melenchon");
+// 	Player1.takeDamage(4);
+// 	Player1.beRepaired(2);
+// 	for (int i = 0; i < 48; i++)
+// 		Player1.attack("Melenchon");
+// 	Player1.attack("Melenchon");
+// 	Player1.beRepaired(2);
 // 	return (0);
 // }
 
@@ -46,16 +55,18 @@ int main(void)
 
 // int main(void)
 // {
-// 	ClapTrap	Player("Macron");
+// 	ScavTrap	Emmanuel("Macron");
+// 	ScavTrap	Player1 = Emmanuel;
 
-// 	Player.setDamage(3);
-// 	Player.attack("Melenchon");
-// 	Player.attack("Melenchon");
-// 	Player.takeDamage(4);
-// 	Player.beRepaired(2);
-// 	Player.takeDamage(8);
-// 	Player.takeDamage(8);
-// 	Player.beRepaired(2);
-// 	Player.attack("Melenchon");
+// 	Player1.setDamage(3);
+// 	Player1.attack("Melenchon");
+// 	Player1.attack("Melenchon");
+// 	Player1.takeDamage(70);
+// 	Player1.beRepaired(20);
+// 	Player1.takeDamage(50);
+
+// 	Player1.takeDamage(1);
+// 	Player1.beRepaired(2);
+// 	Player1.attack("Melenchon");
 // 	return (0);
 // }
