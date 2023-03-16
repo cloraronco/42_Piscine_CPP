@@ -20,8 +20,8 @@ class WrongAnimal
 		
 		WrongAnimal	&operator=(const WrongAnimal &cpy);
 
-		virtual std::string	getType(void) const;
-		virtual void		makeSound() const;
+		std::string	getType(void) const;
+		void		makeSound() const;
 
 	protected:
 		std::string _type;

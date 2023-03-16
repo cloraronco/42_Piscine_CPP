@@ -12,9 +12,8 @@ Dog::Dog(std::string name)
 	std::cout << GREY << "Dog name constructor called" << RESET << std::endl;
 }
 
-Dog::Dog(const Dog &cpy): Animal()
+Dog::Dog(const Dog &cpy): Animal(cpy)
 {
-	*this = cpy;
 	std::cout << GREY << "Dog copy constructor called" << RESET << std::endl;
 }
 
@@ -29,11 +28,6 @@ Dog	&Dog::operator=(const Dog &cpy)
 	return (*this);
 }
 
-
-std::string	Dog::getType(void) const
-{
-	return (_type);
-}
 
 void	Dog::makeSound(void) const
 {

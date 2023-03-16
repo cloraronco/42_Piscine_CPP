@@ -12,9 +12,8 @@ Cat::Cat(std::string name)
 	std::cout << GREY << "Cat name constructor called" << RESET << std::endl;
 }
 
-Cat::Cat(const Cat &cpy): Animal()
+Cat::Cat(const Cat &cpy): Animal(cpy)
 {
-	*this = cpy;
 	std::cout << GREY << "Cat copy constructor called" << RESET << std::endl;
 }
 
@@ -29,10 +28,6 @@ Cat	&Cat::operator=(const Cat &cpy)
 	return (*this);
 }
 
-std::string	Cat::getType(void) const
-{
-	return (_type);
-}
 
 void	Cat::makeSound(void) const
 {

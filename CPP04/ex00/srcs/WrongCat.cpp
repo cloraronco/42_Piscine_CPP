@@ -12,9 +12,8 @@ WrongCat::WrongCat(std::string name)
 	std::cout << GREY << "WrongCat name constructor called" << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat &cpy): WrongAnimal()
+WrongCat::WrongCat(const WrongCat &cpy): WrongAnimal(cpy)
 {
-	*this = cpy;
 	std::cout << GREY << "WrongCat copy constructor called" << std::endl;
 }
 
@@ -29,7 +28,7 @@ WrongCat	&WrongCat::operator=(const WrongCat &cpy)
 	return (*this);
 }
 
-std::string	WrongCat::getType(void) const
+void	WrongCat::makeSound() const
 {
-	return (_type);
+	std::cout << PINK << "A WrongCat makes noise." << RESET << std::endl;
 }

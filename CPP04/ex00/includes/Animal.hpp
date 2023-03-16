@@ -20,7 +20,7 @@ class Animal
 		
 		Animal	&operator=(const Animal &cpy);
 
-		virtual std::string	getType(void) const;
+		std::string	getType(void) const;
 		virtual void		makeSound() const;
 
 	protected:
