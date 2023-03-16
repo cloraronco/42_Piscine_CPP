@@ -22,8 +22,3 @@ Brain	&Brain::operator=(const Brain &cpy)
 		_ideas[i] = cpy._ideas[i];
 	return (*this);
 }
-
-std::string*	Brain::getBrain()
-{
-	return (_ideas);
-}

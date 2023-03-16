@@ -3,24 +3,23 @@
 WrongCat::WrongCat(void)
 {
 	_type = "WrongCat";
-	std::cout << "WrongCat default constructor called" << std::endl;
+	std::cout << GREY << "WrongCat default constructor called" << RESET << std::endl;
 }
 
 WrongCat::WrongCat(std::string name)
 {
 	_type = name;
-	std::cout << "WrongCat name constructor called" << std::endl;
+	std::cout << GREY << "WrongCat name constructor called" << std::endl;
 }
 
-WrongCat::WrongCat(const WrongCat &cpy): WrongAnimal()
+WrongCat::WrongCat(const WrongCat &cpy): WrongAnimal(cpy)
 {
-	*this = cpy;
-	std::cout << "WrongCat copy constructor called" << std::endl;
+	std::cout << GREY << "WrongCat copy constructor called" << std::endl;
 }
 
 WrongCat::~WrongCat(void)
 {
-	std::cout << "WrongCat destructor called" << std::endl;
+	std::cout << GREY << "WrongCat destructor called" << std::endl;
 }
 
 WrongCat	&WrongCat::operator=(const WrongCat &cpy)
@@ -29,7 +28,7 @@ WrongCat	&WrongCat::operator=(const WrongCat &cpy)
 	return (*this);
 }
 
-std::string	WrongCat::getType(void) const
+void	WrongCat::makeSound() const
 {
-	return (_type);
+	std::cout << PINK << "A WrongCat makes noise." << RESET << std::endl;
 }

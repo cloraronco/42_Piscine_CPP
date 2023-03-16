@@ -2,7 +2,7 @@ CC					= c++
 
 CC_FLAGS			= -Wall -Wextra -Werror -std=c++98
 
-NAME				= BurnTheWorld
+NAME				= ArrayPolymorphism
 
 OBJS_DIR			= srcs/objs
 
@@ -16,16 +16,16 @@ OBJS				= $(SRCS:.cpp=.o)
 
 SRCS				=	Animal.cpp \
 						Brain.cpp \
-						Dog.cpp \
 						Cat.cpp \
+						Dog.cpp \
 						WrongAnimal.cpp \
 						WrongCat.cpp \
 						main.cpp
 
 INC					=	$(INC_DIR)Animal.hpp \
 						$(INC_DIR)Brain.hpp \
-						$(INC_DIR)Dog.hpp \
 						$(INC_DIR)Cat.hpp \
+						$(INC_DIR)Dog.hpp \
 						$(INC_DIR)WrongAnimal.hpp \
 						$(INC_DIR)WrongCat.hpp
 							

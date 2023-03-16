@@ -1,44 +1,33 @@
 #include "../includes/Cat.hpp"
 
-Cat::Cat(void)
-{
+Cat::Cat(void) {
 	_type = "Cat";
-	_brain = new Brain();
-	std::cout << "Cat default constructor called" << std::endl;
+	std::cout << GREY << "Cat default constructor called" << RESET << std::endl;
 }
 
-Cat::Cat(std::string name)
-{
+Cat::Cat(std::string name) {
 	_type = name;
-	_brain = new Brain();
-	std::cout << "Cat name constructor called" << std::endl;
+	std::cout << GREY << "Cat name constructor called" << RESET << std::endl;
 }
 
-Cat::Cat(const Cat &cpy): Animal(), _brain()
-{
-	*this = cpy;
-	std::cout << "Cat copy constructor called" << std::endl;
+Cat::Cat(const Cat &cpy): Animal(cpy), brain(new Brain) {
+	std::cout << GREY << "Cat copy constructor called" << RESET << std::endl;
 }
 
-Cat::~Cat(void)
-{
-	delete _brain;
-	std::cout << "Cat destructor called" << std::endl;
+Cat::~Cat(void) {
+	std::cout << GREY << "Cat destructor called" << RESET << std::endl;
 }
 
-Cat	&Cat::operator=(const Cat &cpy)
-{
+Cat	&Cat::operator=(const Cat &cpy) {
 	_type = cpy._type;
-	_brain = new Brain(*cpy._brain);
+	*brain = *cpy.brain;
 	return (*this);
 }
 
-std::string	Cat::getType(void) const
-{
-	return (_type);
+void	Cat::makeSound(void) const {
+	std::cout << MAGENTA << "MAOW MAOW" << RESET << std::endl;
 }
 
-void	Cat::makeSound(void) const
-{
-	std::cout << "MAOW MAOW" << std::endl;
+Brain& Cat::getBrain(void) {
+	return (*brain);
 }

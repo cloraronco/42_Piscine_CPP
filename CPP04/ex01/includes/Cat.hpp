@@ -5,17 +5,19 @@
 
 class	Cat : public	Animal
 {
+
 	public:
 		Cat(void);
 		Cat(std::string name);
 		Cat(const Cat &cpy);
-		virtual ~Cat(void);
+		~Cat(void);
 		
 		Cat	&operator=(const Cat &cpy);
 
-		virtual std::string	getType(void) const;
-		virtual void		makeSound() const;
+		void	makeSound() const;
+		Brain&	getBrain(void);
 	
 	private:
-		Brain*	_brain;
+		Brain*	brain;
+
 };

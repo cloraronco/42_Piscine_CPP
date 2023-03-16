@@ -10,9 +10,8 @@ class	WrongCat : public	WrongAnimal
 		WrongCat(void);
 		WrongCat(std::string name);
 		WrongCat(const WrongCat &cpy);
-		virtual ~WrongCat(void);
+		~WrongCat(void);
 		
 		WrongCat	&operator=(const WrongCat &cpy);
-
-		virtual std::string	getType(void) const;
+		void		makeSound() const;
 };
