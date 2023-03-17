@@ -1,17 +1,18 @@
 #pragma once
+#include <iostream>
 #include "Animal.hpp"
 #include "Brain.hpp"
 
-class	Dog : public	Animal
+class	Cat : public	Animal
 {
 
 	public:
-		Dog(void);
-		Dog(std::string name);
-		Dog(const Dog &cpy);
-		~Dog(void);
+		Cat(void);
+		Cat(std::string name);
+		Cat(const Cat &cpy);
+		~Cat(void);
 		
-		Dog	&operator=(const Dog &cpy);
+		Cat	&operator=(const Cat &cpy);
 
 		void	makeSound() const;
 		Brain&	getBrain(void);

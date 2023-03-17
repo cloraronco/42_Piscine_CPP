@@ -4,33 +4,45 @@
 
 int main()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+	std::cout << std::endl << std::endl << WHITE_B << "	Test ex00" << RESET << std::endl << std::endl;
+	{
+		/*   Example 1   */
 
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound();
+		std::cout << std::endl << WHITE_B << "Example 1 : Animal" << RESET << std::endl << std::endl;
 
-	std::cout << j->getType() << " " << std::endl;
-	j->makeSound();
 
-	meta->makeSound();
+		Animal* meta = new Animal();
+		Animal* j = new Dog();
+		Animal* i = new Cat();
 
-	delete meta;
-	delete j;
-	delete i;
+		std::cout << i->getType() << " " << std::endl;
+		i->makeSound();
 
-	const WrongAnimal* fakeAnimalCat = new WrongCat();
-	const WrongCat* fakeCat = new WrongCat();
+		std::cout << j->getType() << " " << std::endl;
+		j->makeSound();
 
-	std::cout << fakeAnimalCat->getType() << " " << std::endl;
-	fakeAnimalCat->makeSound();
+		meta->makeSound();
 
-	std::cout << fakeCat->getType() << " " << std::endl;
-	fakeCat->makeSound();
+		delete meta;
+		delete j;
+		delete i;
 
-	delete fakeAnimalCat;
-	delete fakeCat;
 
+		/*   Example 2   */
+
+		std::cout << std::endl << WHITE_B << "Example 2 : Wrong Animal" << RESET << std::endl << std::endl;
+
+		WrongAnimal* fakeAnimalCat = new WrongCat();
+		WrongCat* fakeCat = new WrongCat();
+
+		std::cout << fakeAnimalCat->getType() << " " << std::endl;
+		fakeAnimalCat->makeSound();
+
+		std::cout << fakeCat->getType() << " " << std::endl;
+		fakeCat->makeSound();
+
+		delete fakeAnimalCat;
+		delete fakeCat;
+	}
 	return 0;
 }

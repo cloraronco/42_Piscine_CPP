@@ -10,6 +10,7 @@
 #define PINK "\e[0;35m"
 #define MAGENTA "\e[0;36m"
 #define WHITE "\e[0;37m"
+#define WHITE_B "\e[01;37m"
 
 class Animal
 {

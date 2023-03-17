@@ -10,19 +10,18 @@
 #define PINK "\e[0;35m"
 #define MAGENTA "\e[0;36m"
 #define WHITE "\e[0;37m"
-#define WHITE_B "\e[01;37m"
 
-class Animal
+class WrongAnimal
 {
 	public:
-		Animal(void);
-		Animal(const Animal &cpy);
-		virtual ~Animal(void);
+		WrongAnimal(void);
+		WrongAnimal(const WrongAnimal &cpy);
+		virtual ~WrongAnimal(void);
 		
-		Animal	&operator=(const Animal &cpy);
+		WrongAnimal	&operator=(const WrongAnimal &cpy);
 
 		std::string	getType(void) const;
-		virtual void		makeSound() const;
+		void		makeSound() const;
 
 	protected:
 		std::string _type;
