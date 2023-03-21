@@ -10,7 +10,7 @@ class	Dog : public	Animal
 		Dog(void);
 		Dog(std::string name);
 		Dog(const Dog &cpy);
-		~Dog(void);
+		virtual ~Dog(void);
 		
 		Dog	&operator=(const Dog &cpy);
 		void	makeSound() const;

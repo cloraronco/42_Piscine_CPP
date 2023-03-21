@@ -101,7 +101,7 @@ int main()
 		animals[1]->makeSound();
 		animals[2]->makeSound();
 		animals[3]->makeSound();
-		std::cout << std::endl << std::endl ;
+		std::cout << std::endl << std::endl;
 		for (int i = 0; i < 4; i++){
 			delete animals[i];
 		}
@@ -131,7 +131,7 @@ int main()
 		for (int i = 0; i < nb; i++){
 			animals[i]->makeSound();
 		}
-		std::cout << std::endl << std::endl ;
+		std::cout << std::endl << std::endl;
 		for (int i = 0; i < nb; i++){
 			delete animals[i];
 		}
@@ -139,7 +139,7 @@ int main()
 
 	/*               DEEP COPY                 */
 
-	std::cout << std::endl << std::endl ;
+	std::cout << std::endl << std::endl;
 	std::cout << std::endl << WHITE_B << "	Deep copy" << RESET << std::endl << std::endl;
 	{
 		Dog* dogs[2];
@@ -162,6 +162,18 @@ int main()
 		delete dogs[1];
 		delete cats[0];
 		delete cats[1];
+	}
+
+	/*               DEEP COPY - Checklist test                 */
+
+	std::cout << std::endl << std::endl;
+	std::cout << std::endl << WHITE_B << "	Deep copy - Checklist test" << RESET << std::endl << std::endl;
+	{
+		Dog tmp;
+
+		std::cout << std::endl;
+
+		Dog basic = tmp;
 	}
 	return (0);
 }

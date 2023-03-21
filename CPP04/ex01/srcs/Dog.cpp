@@ -8,7 +8,7 @@ Dog::Dog(void) : Animal(), brain(new Brain()) {
 	_type = "Dog";
 }
 
-Dog::Dog(std::string name) : Animal(), brain(new Brain()) {
+Dog::Dog(std::string name): Animal(), brain(new Brain()) {
 	std::cout << GREY << "Dog name constructor called" << RESET << std::endl;
 	for (int i = 0; i < 100; i++){
 		brain->_ideas[i] = "Dog likes cat.";

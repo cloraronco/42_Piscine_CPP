@@ -10,7 +10,7 @@ class	Cat : public	Animal
 		Cat(void);
 		Cat(std::string name);
 		Cat(const Cat &cpy);
-		~Cat(void);
+		virtual ~Cat(void);
 		
 		Cat	&operator=(const Cat &cpy);
 
