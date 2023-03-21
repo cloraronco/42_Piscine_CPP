@@ -6,8 +6,8 @@ int main()
 {
 		/* invalid new-expression of abstract class type */
 
-	Animal* test;
-	test = new Animal;
+	// Animal* test;
+	// test = new Animal;
 
 
 	std::cout << std::endl << std::endl << WHITE_B << "	Test ex00" << RESET << std::endl << std::endl;
