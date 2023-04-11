@@ -2,10 +2,26 @@
 
 int main(void)
 {
-	Bureaucrat	Player("Macron");
-	Bureaucrat	Melenchon(Player);
-	
-	Bureaucrat	NoName;
+	try
+	{
+		Bureaucrat	p1("Edith", 15);
+		Bureaucrat	p2("Marcus", 149);
 
+		std::cout << p1;
+		std::cout << p2;
+
+		p1++;
+		p1++;
+		p2--;
+
+		std::cout << p1;
+		std::cout << p2;
+		p2--;
+		p2--;
+	}
+	catch (std::exception &e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 	return (0);
 }

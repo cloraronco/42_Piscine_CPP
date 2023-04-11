@@ -15,16 +15,32 @@ class Bureaucrat
 {
 	public:
 		Bureaucrat(void);
-		Bureaucrat(std::string name);
+		Bureaucrat(std::string name, int grade);
 		Bureaucrat(const Bureaucrat &cpy);
 		~Bureaucrat(void);
 
 		Bureaucrat	&operator=(const Bureaucrat &cpy);
+		Bureaucrat	operator++(int);
+		Bureaucrat	operator--(int);
 
-		void	setDamage(int nb);
-		int		getDamage(void) const;
+		class	GradeTooHighException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+		class	GradeTooLowException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 
-	protected:
-		std::string	_name;
+		std::string	getName() const;
+		int		getGrade(void) const;
+
+	private:
+		const std::string	_name;
+		int			_grade;
 
 };
+
+std::ostream	&operator<<(std::ostream& os, Bureaucrat const& obj);
