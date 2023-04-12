@@ -7,13 +7,15 @@ int	fd2(char *str, char *arg)
 	while (*str)
 		write(2, str++, 1);
 	if (arg)
+	{
 		while (*arg)
 			write(2, arg++, 1);
+	}
 	write(2, "\n", 1);
 	return (1);
 }
 
-int	ft_exec(char **av, int i, int tmp, char **env)
+int	ft_exec(char **av, char **env, int i, int tmp)
 {
 	av[i] = 0;
 	dup2(tmp, 0);
@@ -45,7 +47,7 @@ int	main(int ac, char **av, char **env)
 			pid = fork();
 			if (!pid)
 			{
-				if (ft_exec(av, i, tmp, env))
+				if (ft_exec(av, env, i, tmp))
 					return (1);
 			}
 			else
@@ -56,7 +58,7 @@ int	main(int ac, char **av, char **env)
 				tmp = dup(0);
 			}
 		}
-		else if(i && !strcmp(av[i], "|"))
+		else if (i && !strcmp(av[i], "|"))
 		{
 			pipe(fd);
 			pid = fork();
@@ -65,7 +67,7 @@ int	main(int ac, char **av, char **env)
 				dup2(fd[1], 1);
 				close(fd[0]);
 				close(fd[1]);
-				if (ft_exec(av, i, tmp, env))
+				if (ft_exec(av, env, i, tmp))
 					return (1);
 			}
 			else
@@ -77,5 +79,5 @@ int	main(int ac, char **av, char **env)
 		}
 	}
 	close(tmp);
-	return(0);
+	return (0);
 }
