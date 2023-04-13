@@ -4,20 +4,26 @@ int main(void)
 {
 	try
 	{
-		Bureaucrat	p1("Edith", 15);
-		Bureaucrat	p2("Marcus", 149);
+		Bureaucrat	Piaf("Edith", 15);
+		Bureaucrat	Miller("Marcus", 149);
+		Form		form1("Form 0", 40, 10);
+		Form		form2("Form 1", 40, 60);
 
-		std::cout << p1;
-		std::cout << p2;
+		std::cout << Piaf;
+		std::cout << Miller;
+		std::cout << form1;
+		std::cout << form2;
 
-		p1++;
-		p1++;
-		p2--;
+		Piaf++;
+		Piaf++;
+		Miller--;
+		Piaf.signForm(form1);
+		Miller.signForm(form1);
 
-		std::cout << p1;
-		std::cout << p2;
-		p2--;
-		p2--;
+		std::cout << Piaf;
+		std::cout << Miller;
+		Miller--;
+		Miller--;
 	}
 	catch (std::exception &e)
 	{

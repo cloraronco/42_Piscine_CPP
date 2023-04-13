@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "Form.hpp"
 
 #define RESET "\e[0m"
 #define GREY "\e[0;30m"
@@ -11,6 +12,7 @@
 #define MAGENTA "\e[0;36m"
 #define WHITE "\e[0;37m"
 
+class Form;
 class Bureaucrat
 {
 	public:
@@ -35,7 +37,8 @@ class Bureaucrat
 		};
 
 		std::string	getName() const;
-		int		getGrade(void) const;
+		int			getGrade(void) const;
+		void		signForm(Form& form);
 
 	private:
 		const std::string	_name;
