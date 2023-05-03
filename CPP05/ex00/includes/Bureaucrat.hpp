@@ -35,7 +35,7 @@ class Bureaucrat
 		};
 
 		std::string	getName() const;
-		int		getGrade(void) const;
+		int			getGrade(void) const;
 
 	private:
 		const std::string	_name;
