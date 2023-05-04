@@ -1,17 +1,17 @@
 #include "../includes/ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(void): _target("Unknown")
+ShrubberyCreationForm::ShrubberyCreationForm(void): Form("ShrubberyCreationForm", 145, 137), _target("Unknown")
 {
 	std::cout << GREY << "ShrubberyCreationForm default constructor called" << RESET << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target): _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target): Form("ShrubberyCreationForm", 145, 137), _target(target)
 {
 	_target = target;
 	std::cout << GREY << "ShrubberyCreationForm name constructor called" << RESET << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &cpy)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &cpy): Form(cpy.getName(), cpy.getGradeToSign(), cpy.getGradeToExec())
 {
 	*this = cpy;
 	std::cout << GREY << "ShrubberyCreationForm copy constructor called" << RESET << std::endl;
@@ -24,42 +24,30 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 
 
 
-
-ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationForm &cpy)
+ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationForm &obj)
 {
-	_target = cpy._target;
+	_target = obj._target;
 	return (*this);
 }
 
-std::ostream &operator<<(std::ostream& os, ShrubberyCreationForm const& obj)
+
+void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	os << obj.getName() << ", ShrubberyCreationForm grade " << obj.getGrade() << "." << std::endl;
-	return (os);
-}
-
-
-
-const char* ShrubberyCreationForm::GradeTooHighException::what() const throw()
-{
-	return ("Grade too high.");
-}
-
-const char* ShrubberyCreationForm::GradeTooLowException::what() const throw()
-{
-	return ("Grade too low.");
-}
-
-// void		ShrubberyCreationForm::signForm(Form& form)
-// {
-// 	try
-// 	{
-// 		form.beSigned(*this);
-// 		if (form.getSigned())
-// 			std::cout << _name << " signed " << form.getName() << "." << std::endl;
-// 	}
-// 	catch(const std::exception& e)
-// 	{
-// 		std::cerr << RED << _name << " couldn’t sign " << form.getName() << " because " << e.what() << RESET << std::endl;
-// 	}
+	if (!getSigned())
+		throw std::logic_error(executor.getName() + " can't execute a non-signed form.\n");
+	if (executor.getGrade() > getGradeToExec())
+		throw std::logic_error(executor.getName() + " can't execute because grade is too low.\n");
+	std::ofstream	output((std::string)_target + "_shrubbery", std::ios_base::app);
 	
-// }
+	output <<	"            ,@@@@@@@," << std::endl <<
+				"    ,,,.   ,@@@@@@/@@,  .oo8888o." << std::endl <<
+				" ,&\\%\\%&%&&%,@@@@@/@@@@@@,8888\\88/8o" << std::endl <<
+				",%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'" << std::endl <<
+				"%&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'" << std::endl <<
+				"%&&%/ %&\\%\\%&&@@\\ V /@@' `88\\8 `/88'" << std::endl <<
+				"`&%\\ ` /%&'    |.|        \\ '|8'" << std::endl <<
+				"    |o|        | |         | |" << std::endl <<
+				"    |.|        | |         | |" << std::endl <<
+				" \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_" << std::endl;
+	output.close();
+}

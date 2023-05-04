@@ -1,17 +1,17 @@
 #include "../includes/RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(void): _target("Unknown")
+RobotomyRequestForm::RobotomyRequestForm(void): Form("RobotomyRequestForm", 72, 45), _target("Unknown")
 {
 	std::cout << GREY << "RobotomyRequestForm default constructor called" << RESET << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target): _target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target): Form("RobotomyRequestForm", 72, 45),_target(target)
 {
 	_target = target;
 	std::cout << GREY << "RobotomyRequestForm name constructor called" << RESET << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &cpy)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &cpy): Form(cpy.getName(), cpy.getGradeToSign(), cpy.getGradeToExec())
 {
 	*this = cpy;
 	std::cout << GREY << "RobotomyRequestForm copy constructor called" << RESET << std::endl;
@@ -24,42 +24,15 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
 
 
 
-
-RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &cpy)
+RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &obj)
 {
-	_target = cpy._target;
+	_target = obj._target;
 	return (*this);
 }
 
-std::ostream &operator<<(std::ostream& os, RobotomyRequestForm const& obj)
+
+
+void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-	os << obj.getName() << ", RobotomyRequestForm grade " << obj.getGrade() << "." << std::endl;
-	return (os);
-}
-
-
-
-const char* RobotomyRequestForm::GradeTooHighException::what() const throw()
-{
-	return ("Grade too high.");
-}
-
-const char* RobotomyRequestForm::GradeTooLowException::what() const throw()
-{
-	return ("Grade too low.");
-}
-
-// void		RobotomyRequestForm::signForm(Form& form)
-// {
-// 	try
-// 	{
-// 		form.beSigned(*this);
-// 		if (form.getSigned())
-// 			std::cout << _name << " signed " << form.getName() << "." << std::endl;
-// 	}
-// 	catch(const std::exception& e)
-// 	{
-// 		std::cerr << RED << _name << " couldn’t sign " << form.getName() << " because " << e.what() << RESET << std::endl;
-// 	}
 	
-// }
+}
