@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <stdlib.h>
 #include "Form.hpp"
 
 #define RESET "\e[0m"
@@ -23,7 +24,7 @@ class Bureaucrat
 
 		Bureaucrat	&operator=(const Bureaucrat &cpy);
 		Bureaucrat	operator++(int);
-		Bureaucrat	operator--(int); 
+		Bureaucrat	operator--(int);
 
 		class	GradeTooHighException : public std::exception
 		{

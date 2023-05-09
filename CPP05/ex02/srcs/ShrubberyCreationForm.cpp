@@ -37,17 +37,23 @@ void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 		throw std::logic_error(executor.getName() + " can't execute a non-signed form.\n");
 	if (executor.getGrade() > getGradeToExec())
 		throw std::logic_error(executor.getName() + " can't execute because grade is too low.\n");
-	std::ofstream	output((std::string)_target + "_shrubbery", std::ios_base::app);
+	std::ofstream	output((_target + "_shrubbery").c_str(), std::ios_base::app);
 	
-	output <<	"            ,@@@@@@@," << std::endl <<
-				"    ,,,.   ,@@@@@@/@@,  .oo8888o." << std::endl <<
-				" ,&\\%\\%&%&&%,@@@@@/@@@@@@,8888\\88/8o" << std::endl <<
-				",%&\\%&&%&&%,@@@\\@@@/@@@88\\88888/88'" << std::endl <<
-				"%&&%&%&/%&&%@@\\@@/ /@@@88888\\88888'" << std::endl <<
-				"%&&%/ %&\\%\\%&&@@\\ V /@@' `88\\8 `/88'" << std::endl <<
-				"`&%\\ ` /%&'    |.|        \\ '|8'" << std::endl <<
-				"    |o|        | |         | |" << std::endl <<
-				"    |.|        | |         | |" << std::endl <<
-				" \\/ ._\\//_/__/  ,\\_//__\\/.  \\_//__/_" << std::endl;
+	output <<	"       .     .     .      +     .      .          ." << std::endl <<
+				"     .       .      .     #       .           ." << std::endl <<
+				"        .      .         ###            .      .      ." << std::endl <<
+				"      .      .   #:. .:## ##:. .:#  .      ." << std::endl <<
+				"          .      .  #### ### ####      .       ." << std::endl <<
+				"       .     #:.    .:# ### #:.    .:#  .        .       ." << std::endl <<
+				"  .              ######### #########        .        ." << std::endl <<
+				"        .     #:.   #### ### ####   .:#   .       ." << std::endl <<
+				"     .     .   #######  ## ##  #######                 ." << std::endl <<
+				"                . ## ##### ##### ##           .      ." << std::endl <<
+				"    .    #:. ...  .:## ### ### ##:.  ... .:#     ." << std::endl <<
+				"      .      ####### ## ##### ## #######      .     ." << std::endl <<
+				"    .    .      #####  #######  #####    .      ." << std::endl <<
+				"            .            000          .     ." << std::endl <<
+				"       .         .   .   000     .        .       ." << std::endl <<
+				"........................O000O........................" << std::endl;
 	output.close();
 }

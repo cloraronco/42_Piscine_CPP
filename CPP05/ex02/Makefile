@@ -18,14 +18,14 @@ SRCS				=	main.cpp \
 						Bureaucrat.cpp \
 						PresidentialPardonForm.cpp \
 						RobotomyRequestForm.cpp \
-						ShrubberyRequestForm.cpp \
+						ShrubberyCreationForm.cpp \
 						Form.cpp
 
 INC					=	$(INC_DIR)Bureaucrat.hpp \
 						$(INC_DIR)Form.hpp \
 						$(INC_DIR)PresidentialPardonForm.hpp \
 						$(INC_DIR)RobotomyRequestForm.hpp \
-						$(INC_DIR)ShrubberyRequestForm.hpp
+						$(INC_DIR)ShrubberyCreationForm.hpp
 
 all: $(NAME)
 

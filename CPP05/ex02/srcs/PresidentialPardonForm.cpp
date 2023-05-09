@@ -34,4 +34,9 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPard
 
 void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
+	if (!getSigned())
+		throw std::logic_error(executor.getName() + " can't execute a non-signed form.\n");
+	if (executor.getGrade() > getGradeToExec())
+		throw std::logic_error(executor.getName() + " can't execute because grade is too low.\n");
+	return;
 }
