@@ -6,17 +6,17 @@
 
 int main(void)
 {
-	Bureaucrat				Piaf("Edith Piaf", 5);
-	Bureaucrat				Miller("Marcus Miller", 149);
-	PresidentialPardonForm	apologize("Trump");
-	RobotomyRequestForm		RobotRequest("R2D2");
-	ShrubberyCreationForm	makeTree("Been");
+	Bureaucrat				Piaf("Piaf", 5);
+	Bureaucrat				Miller("Miller", 149);
+	PresidentialPardonForm	Apologize("Apologize");
+	RobotomyRequestForm		RobotRequest("RobotRequest");
+	ShrubberyCreationForm	makeTree("makeTree");
 
 	try
 	{
-		Piaf.signForm(apologize);
-		apologize.execute(Piaf);
-		apologize.execute(Miller);
+		Piaf.signForm(Apologize);
+		Apologize.execute(Piaf);
+		Apologize.execute(Miller);
 	}
 	catch(const std::exception& e)
 	{

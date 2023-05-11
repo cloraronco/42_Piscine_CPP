@@ -1,17 +1,18 @@
 #include "../includes/Bureaucrat.hpp"
 
+/*___________________________CONSTRUCTORS/ DESTRUCTOR____________________________*/
+
 Bureaucrat::Bureaucrat(void): _name("Unknown")
 {
 	std::cout << GREY << "Bureaucrat default constructor called" << RESET << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
+Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade)
 {
 	if (grade < 1)
 		throw GradeTooHighException();
 	if (grade > 150)
 		throw GradeTooLowException();
-	_grade = grade;
 	std::cout << GREY << "Bureaucrat name constructor called" << RESET << std::endl;
 }
 
@@ -27,13 +28,22 @@ Bureaucrat::~Bureaucrat(void)
 }
 
 
-
+/*___________________________ OVERLOADING OPERATORS________________________________*/
 
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &cpy)
 {
 	_grade = cpy._grade;
 	return (*this);
 }
+
+std::ostream &operator<<(std::ostream& os, Bureaucrat const& obj)
+{
+	os << obj.getName() << ", bureaucrat grade " << obj.getGrade() << "." << std::endl;
+	return (os);
+}
+
+
+/*____________________________INCREMENT/ DECREMENT_________________________________*/
 
 Bureaucrat Bureaucrat::operator++(int)
 {
@@ -53,14 +63,8 @@ Bureaucrat Bureaucrat::operator--(int)
 	return (cpy);
 }
 
-std::ostream &operator<<(std::ostream& os, Bureaucrat const& obj)
-{
-	os << obj.getName() << ", bureaucrat grade " << obj.getGrade() << "." << std::endl;
-	return (os);
-}
 
-
-
+/*__________________________________ACCESSORS______________________________________*/
 
 std::string	Bureaucrat::getName() const
 {
@@ -73,6 +77,7 @@ int			Bureaucrat::getGrade() const
 }
 
 
+/*________________________________MEMBERS FONCTIONS________________________________*/
 
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
@@ -90,7 +95,7 @@ void		Bureaucrat::signForm(Form& form)
 	{
 		form.beSigned(*this);
 		if (form.getSigned())
-			std::cout << _name << " signed " << form.getName() << "." << std::endl;
+			std::cout<< GREEN << _name << " signed " << form.getName() << "." << RESET << std::endl;
 	}
 	catch(const std::exception& e)
 	{

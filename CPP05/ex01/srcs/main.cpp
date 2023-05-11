@@ -2,13 +2,13 @@
 
 int main(void)
 {
+	Bureaucrat	Piaf("Piaf", 15);
+	Bureaucrat	Miller("Miller", 50);
+	Form		form1("Form 1", 40, 10);
+	Form		form2("Form 2", 40, 60);
+
 	try
 	{
-		Bureaucrat	Piaf("Edith", 15);
-		Bureaucrat	Miller("Marcus", 149);
-		Form		form1("Form 0", 40, 10);
-		Form		form2("Form 1", 40, 60);
-
 		std::cout << Piaf;
 		std::cout << Miller;
 		std::cout << form1;
@@ -18,7 +18,7 @@ int main(void)
 		Piaf++;
 		Miller--;
 		Piaf.signForm(form1);
-		Miller.signForm(form1);
+		Miller.signForm(form2);
 
 		std::cout << Piaf;
 		std::cout << Miller;

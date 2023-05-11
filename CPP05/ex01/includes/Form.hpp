@@ -24,14 +24,15 @@ class	Form
 			public:
 			virtual const char* what() const throw();
 		};
-		
-		void	beSigned(const Bureaucrat& bureaucrat);
-		void	signForm(void);
 
 		std::string	getName() const;
 		bool		getSigned() const;
 		int			getGradeToSign() const;
 		int			getGradeToExec() const;
+
+		void	beSigned(const Bureaucrat& bureaucrat);
+		void	signForm(void);
+
 
 	private:
 		const std::string	_name;

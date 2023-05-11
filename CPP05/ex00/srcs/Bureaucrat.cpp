@@ -1,5 +1,8 @@
 #include "../includes/Bureaucrat.hpp"
 
+
+/*___________________________CONSTRUCTORS/ DESTRUCTOR____________________________*/
+
 Bureaucrat::Bureaucrat(void): _name("Unknown")
 {
 	std::cout << GREY << "Bureaucrat default constructor called" << RESET << std::endl;
@@ -27,7 +30,7 @@ Bureaucrat::~Bureaucrat(void)
 }
 
 
-
+/*___________________________ OVERLOADING OPERATORS________________________________*/
 
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &cpy)
 {
@@ -35,7 +38,16 @@ Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &cpy)
 	return (*this);
 }
 
-Bureaucrat Bureaucrat::operator++(int)
+std::ostream	&operator<<(std::ostream& os, Bureaucrat const& obj)
+{
+	os << obj.getName() << ", bureaucrat grade " << obj.getGrade() << "." << std::endl;
+	return (os);
+}
+
+
+/*____________________________INCREMENT/ DECREMENT_________________________________*/
+
+Bureaucrat	Bureaucrat::operator++(int)
 {
 	if (_grade <= 1)
 		throw GradeTooHighException();
@@ -44,7 +56,7 @@ Bureaucrat Bureaucrat::operator++(int)
 	return (cpy);
 }
 
-Bureaucrat Bureaucrat::operator--(int)
+Bureaucrat	Bureaucrat::operator--(int)
 {
 	if (_grade >= 150)
 		throw GradeTooHighException();
@@ -53,14 +65,8 @@ Bureaucrat Bureaucrat::operator--(int)
 	return (cpy);
 }
 
-std::ostream &operator<<(std::ostream& os, Bureaucrat const& obj)
-{
-	os << obj.getName() << ", bureaucrat grade " << obj.getGrade() << "." << std::endl;
-	return (os);
-}
 
-
-
+/*__________________________________ACCESSORS______________________________________*/
 
 std::string	Bureaucrat::getName() const
 {
@@ -73,13 +79,14 @@ int			Bureaucrat::getGrade() const
 }
 
 
+/*________________________________MEMBERS FONCTIONS________________________________*/
 
-const char* Bureaucrat::GradeTooHighException::what() const throw()
+const char*	Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Grade too high.");
 }
 
-const char* Bureaucrat::GradeTooLowException::what() const throw()
+const char*	Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low.");
 }
