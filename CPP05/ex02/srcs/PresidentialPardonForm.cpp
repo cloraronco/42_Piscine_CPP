@@ -1,5 +1,7 @@
 #include "../includes/PresidentialPardonForm.hpp"
 
+/*___________________________CONSTRUCTORS/ DESTRUCTOR____________________________*/
+
 PresidentialPardonForm::PresidentialPardonForm(void): Form("PresidentialPardonForm", 25, 5), _target("Unknown")
 {
 	std::cout << GREY << "PresidentialPardonForm default constructor called" << RESET << std::endl;
@@ -22,8 +24,7 @@ PresidentialPardonForm::~PresidentialPardonForm(void)
 	std::cout << GREY << "PresidentialPardonForm destructor called" << RESET << std::endl;
 }
 
-
-
+/*___________________________ OVERLOADING OPERATORS________________________________*/
 
 PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPardonForm &obj)
 {
@@ -32,11 +33,16 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPard
 }
 
 
+/*________________________________MEMBERS FONCTIONS________________________________*/
+
 void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 	if (!getSigned())
 		throw std::logic_error(executor.getName() + " can't execute a non-signed form.\n");
-	if (executor.getGrade() > getGradeToExec())
-		throw std::logic_error(executor.getName() + " can't execute because grade is too low.\n");
-	return;
+	else if (executor.getGrade() > getGradeToExec())
+		throw GradeTooLowException();
+		// throw std::logic_error(executor.getName() + " can't execute because grade is too low.\n");
+	else
+		throw 
+		// throw Form::LevelLoadException("");
 }

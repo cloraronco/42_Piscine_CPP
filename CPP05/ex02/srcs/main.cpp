@@ -8,52 +8,54 @@ int main(void)
 {
 	Bureaucrat				Piaf("Piaf", 5);
 	Bureaucrat				Miller("Miller", 149);
-	PresidentialPardonForm	Apologize("Apologize");
+	PresidentialPardonForm	PPF("PPF");
 	RobotomyRequestForm		RobotRequest("RobotRequest");
 	ShrubberyCreationForm	makeTree("makeTree");
 
 	try
 	{
-		Piaf.signForm(Apologize);
-		Apologize.execute(Piaf);
-		Apologize.execute(Miller);
+		std::cout << PPF;
+		Piaf.signForm(PPF);
+		Piaf.signForm(PPF);
+		PPF.execute(Piaf);
+		// PPF.execute(Miller);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << RED << e.what() << RESET << std::endl;
 	}
 
-	try
-	{
-		Piaf.signForm(RobotRequest);
-		RobotRequest.execute(Piaf);
-		RobotRequest.execute(Piaf);
-		RobotRequest.execute(Piaf);
-		RobotRequest.execute(Piaf);
-		RobotRequest.execute(Piaf);
-		RobotRequest.execute(Piaf);
-		RobotRequest.execute(Piaf);
-		RobotRequest.execute(Piaf);
-		RobotRequest.execute(Piaf);
-		RobotRequest.execute(Piaf);
-		RobotRequest.execute(Piaf);
-		RobotRequest.execute(Piaf);
-		RobotRequest.execute(Miller);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << RED << e.what() << RESET << std::endl;
-	}
+	// try
+	// {
+	// 	Piaf.signForm(RobotRequest);
+	// 	RobotRequest.execute(Piaf);
+	// 	RobotRequest.execute(Piaf);
+	// 	RobotRequest.execute(Piaf);
+	// 	RobotRequest.execute(Piaf);
+	// 	RobotRequest.execute(Piaf);
+	// 	RobotRequest.execute(Piaf);
+	// 	RobotRequest.execute(Piaf);
+	// 	RobotRequest.execute(Piaf);
+	// 	RobotRequest.execute(Piaf);
+	// 	RobotRequest.execute(Piaf);
+	// 	RobotRequest.execute(Piaf);
+	// 	RobotRequest.execute(Piaf);
+	// 	RobotRequest.execute(Miller);
+	// }
+	// catch(const std::exception& e)
+	// {
+	// 	std::cerr << RED << e.what() << RESET << std::endl;
+	// }
 	
-	try
-	{
-		Piaf.signForm(makeTree);
-		makeTree.execute(Piaf);
-		makeTree.execute(Miller);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << RED << e.what() << RESET << std::endl;
-	}
+	// try
+	// {
+	// 	Piaf.signForm(makeTree);
+	// 	makeTree.execute(Piaf);
+	// 	makeTree.execute(Miller);
+	// }
+	// catch(const std::exception& e)
+	// {
+	// 	std::cerr << RED << e.what() << RESET << std::endl;
+	// }
 	return (0);
 }

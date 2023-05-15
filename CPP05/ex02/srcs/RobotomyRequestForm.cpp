@@ -1,5 +1,7 @@
 #include "../includes/RobotomyRequestForm.hpp"
 
+/*___________________________CONSTRUCTORS/ DESTRUCTOR____________________________*/
+
 RobotomyRequestForm::RobotomyRequestForm(void): Form("RobotomyRequestForm", 72, 45), _target("Unknown")
 {
 	std::cout << GREY << "RobotomyRequestForm default constructor called" << RESET << std::endl;
@@ -23,6 +25,7 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
 }
 
 
+/*___________________________ OVERLOADING OPERATORS________________________________*/
 
 RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &obj)
 {
@@ -31,6 +34,7 @@ RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 }
 
 
+/*________________________________MEMBERS FONCTIONS________________________________*/
 
 void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
@@ -42,5 +46,4 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 		std::cout << " " << _target << " fully Robotomyzed!" << std::endl;
 	else
 		std::cout<< " Robotomy failed!" << std::endl;
-	return;
 }

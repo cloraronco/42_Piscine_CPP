@@ -1,4 +1,5 @@
 #include "../includes/Form.hpp"
+#include <iostream>
 
 /*___________________________CONSTRUCTORS/ DESTRUCTOR____________________________*/
 
@@ -83,8 +84,10 @@ const char* Form::GradeTooLowException::what() const throw()
 
 void		Form::beSigned(const Bureaucrat& bureaucrat)
 {
-	if (bureaucrat.getGrade() <= _gradeToSign)
-		_signed = true;
-	else
+	if (bureaucrat.getGrade() > _gradeToSign)
 		throw GradeTooLowException();
+	else if (_signed == true)
+		throw std::invalid_argument("it is already signed.");
+	else
+		_signed = true;
 }
