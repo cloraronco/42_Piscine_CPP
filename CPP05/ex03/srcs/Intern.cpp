@@ -69,7 +69,7 @@ Form*	Intern::makeForm(std::string formName, std::string targetName)
 		i++;
 	}
 	if (i == 3)
-		throw std::logic_error(formName + "doesn't exist.\n");
+		throw std::logic_error(formName + " doesn't exist.");
 	else
 		ptr = (this->*formType[i])(formName, targetName);
 	return (ptr);

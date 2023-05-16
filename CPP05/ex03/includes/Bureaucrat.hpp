@@ -23,8 +23,6 @@ class Bureaucrat
 		~Bureaucrat(void);
 
 		Bureaucrat	&operator=(const Bureaucrat &cpy);
-		Bureaucrat	operator++(int);
-		Bureaucrat	operator--(int);
 
 		class	GradeTooHighException : public std::exception
 		{
@@ -37,6 +35,8 @@ class Bureaucrat
 				virtual const char* what() const throw();
 		};
 
+		void		incrementation(int i);		
+		void		decrementation(int i);	
 		std::string	getName() const;
 		int			getGrade(void) const;
 		void		signForm(Form& form);

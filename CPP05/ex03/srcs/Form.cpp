@@ -1,4 +1,7 @@
 #include "../includes/Form.hpp"
+#include <iostream>
+
+/*___________________________CONSTRUCTORS/ DESTRUCTOR____________________________*/
 
 Form::Form(void): _name("Unknown"), _signed(false), _gradeToSign(50), _gradeToExec(150)
 {
@@ -26,7 +29,7 @@ Form::~Form(void)
 }
 
 
-
+/*___________________________ OVERLOADING OPERATORS________________________________*/
 
 Form	&Form::operator=(const Form &cpy)
 {
@@ -44,14 +47,14 @@ std::ostream &operator<<(std::ostream& os, Form const& obj)
 }
 
 
-
+/*__________________________________ACCESSORS______________________________________*/
 
 std::string	Form::getName() const
 {
 	return(_name);
 }
 
-bool	Form::getSigned() const
+bool		Form::getSigned() const
 {
 	return(_signed);
 }
@@ -66,6 +69,9 @@ int			Form::getGradeToExec() const
 	return(_gradeToExec);
 }
 
+
+/*________________________________MEMBERS FONCTIONS________________________________*/
+
 const char* Form::GradeTooHighException::what() const throw()
 {
 	return ("Grade too high.");
@@ -75,10 +81,13 @@ const char* Form::GradeTooLowException::what() const throw()
 {
 	return ("Grade too low.");
 }
+
 void		Form::beSigned(const Bureaucrat& bureaucrat)
 {
-	if (bureaucrat.getGrade() <= _gradeToSign)
-		_signed = true;
-	else
+	if (bureaucrat.getGrade() > _gradeToSign)
 		throw GradeTooLowException();
+	else if (_signed == true)
+		throw std::invalid_argument("it is already signed.");
+	else
+		_signed = true;
 }

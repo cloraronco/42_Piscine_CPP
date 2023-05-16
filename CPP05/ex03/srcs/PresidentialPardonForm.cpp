@@ -1,5 +1,7 @@
 #include "../includes/PresidentialPardonForm.hpp"
 
+/*___________________________CONSTRUCTORS/ DESTRUCTOR____________________________*/
+
 PresidentialPardonForm::PresidentialPardonForm(void): Form("PresidentialPardonForm", 25, 5), _target("Unknown")
 {
 	std::cout << GREY << "PresidentialPardonForm default constructor called" << RESET << std::endl;
@@ -7,7 +9,6 @@ PresidentialPardonForm::PresidentialPardonForm(void): Form("PresidentialPardonFo
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target): Form("PresidentialPardonForm", 25, 5), _target(target)
 {
-	_target = target;
 	std::cout << GREY << "PresidentialPardonForm name constructor called" << RESET << std::endl;
 }
 
@@ -22,8 +23,7 @@ PresidentialPardonForm::~PresidentialPardonForm(void)
 	std::cout << GREY << "PresidentialPardonForm destructor called" << RESET << std::endl;
 }
 
-
-
+/*___________________________ OVERLOADING OPERATORS________________________________*/
 
 PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPardonForm &obj)
 {
@@ -32,11 +32,14 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPard
 }
 
 
+/*________________________________MEMBERS FONCTIONS________________________________*/
+
 void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 	if (!getSigned())
 		throw std::logic_error(executor.getName() + " can't execute a non-signed form.\n");
 	if (executor.getGrade() > getGradeToExec())
-		throw std::logic_error(executor.getName() + " can't execute because grade is too low.\n");
-	return;
+		throw std::logic_error(executor.getName() + " can't execute because his grade is too low.\n");
+	if (getSigned() && (executor.getGrade() <= getGradeToExec()))
+		std::cout << MAGENTA << _target << " is forgiven by Zaphod Beeblebrox." << RESET << std::endl;
 }

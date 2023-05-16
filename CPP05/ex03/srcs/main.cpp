@@ -7,26 +7,19 @@
 
 int main(void)
 {
-	Bureaucrat				Piaf("Edith Piaf", 5);
-	// Bureaucrat				Miller("Marcus Miller", 149);
-	// PresidentialPardonForm	apologize("Trump");
-	// RobotomyRequestForm		RobotRequest("R2D2");
-	// ShrubberyCreationForm	makeTree("Been");
+	Bureaucrat				Piaf("Piaf", 5);
+	// Bureaucrat				Miller("Miller", 149);
+	// PresidentialPardonForm	PPF("PPF");
+	// RobotomyRequestForm		RobotRequest("RobotRequest");
+	// ShrubberyCreationForm	makeTree("makeTree");
 
-	Intern	someRandomIntern;
-	Form*	rrf;
-	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 
 	try
 	{
+		Intern	someRandomIntern;
+		Form*	rrf;
+		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 		rrf->beSigned(Piaf);
-		rrf->execute(Piaf);
-		rrf->execute(Piaf);
-		rrf->execute(Piaf);
-		rrf->execute(Piaf);
-		rrf->execute(Piaf);
-		rrf->execute(Piaf);
-		rrf->execute(Piaf);
 		rrf->execute(Piaf);
 		if (rrf)
 			delete (rrf);
@@ -35,13 +28,15 @@ int main(void)
 	{
 		std::cerr << RED << e.what() << RESET << std::endl;
 	}
-	
 
 	// try
 	// {
-	// 	Piaf.signForm(apologize);
-	// 	apologize.execute(Piaf);
-	// 	apologize.execute(Miller);
+	// 	std::cout << PPF;
+	// 	Piaf.signForm(PPF);
+	// 	Piaf.signForm(PPF);
+	// 	Piaf.executeForm(PPF);
+	// 	Piaf.executeForm(PPF);
+	// 	Miller.executeForm(PPF);
 	// }
 	// catch(const std::exception& e)
 	// {
@@ -51,30 +46,19 @@ int main(void)
 	// try
 	// {
 	// 	Piaf.signForm(RobotRequest);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Miller);
+	// 	Piaf.executeForm(RobotRequest);
+	// 	Miller.executeForm(RobotRequest);
 	// }
 	// catch(const std::exception& e)
 	// {
 	// 	std::cerr << RED << e.what() << RESET << std::endl;
 	// }
-
+	
 	// try
 	// {
 	// 	Piaf.signForm(makeTree);
-	// 	makeTree.execute(Piaf);
-	// 	makeTree.execute(Miller);
+	// 	Piaf.executeForm(makeTree);
+	// 	Miller.executeForm(makeTree);
 	// }
 	// catch(const std::exception& e)
 	// {

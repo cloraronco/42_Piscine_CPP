@@ -16,11 +16,11 @@ OBJS				= $(SRCS:.cpp=.o)
 
 SRCS				=	main.cpp \
 						Bureaucrat.cpp \
+						Form.cpp \
 						Intern.cpp \
 						PresidentialPardonForm.cpp \
 						RobotomyRequestForm.cpp \
-						ShrubberyCreationForm.cpp \
-						Form.cpp
+						ShrubberyCreationForm.cpp
 
 INC					=	$(INC_DIR)Bureaucrat.hpp \
 						$(INC_DIR)Form.hpp \
