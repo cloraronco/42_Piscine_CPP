@@ -69,7 +69,7 @@ int			Form::getGradeToExec() const
 }
 
 
-/*________________________________MEMBERS FONCTIONS________________________________*/
+/*___________________________________EXCEPTIONS____________________________________*/
 
 const char* Form::GradeTooHighException::what() const throw()
 {
@@ -81,10 +81,15 @@ const char* Form::GradeTooLowException::what() const throw()
 	return ("Grade too low.");
 }
 
+
+/*________________________________MEMBERS FONCTIONS________________________________*/
+
 void		Form::beSigned(const Bureaucrat& bureaucrat)
 {
-	if (bureaucrat.getGrade() <= _gradeToSign)
-		_signed = true;
-	else
+	if (bureaucrat.getGrade() > _gradeToSign)
 		throw GradeTooLowException();
+	else if (_signed == true)
+		throw std::invalid_argument("it's already signed.");
+	else
+		_signed = true;
 }

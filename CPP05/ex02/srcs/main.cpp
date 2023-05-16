@@ -17,45 +17,35 @@ int main(void)
 		std::cout << PPF;
 		Piaf.signForm(PPF);
 		Piaf.signForm(PPF);
-		PPF.execute(Piaf);
-		// PPF.execute(Miller);
+		Piaf.executeForm(PPF);
+		Piaf.executeForm(PPF);
+		Miller.executeForm(PPF);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << RED << e.what() << RESET << std::endl;
 	}
 
-	// try
-	// {
-	// 	Piaf.signForm(RobotRequest);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Piaf);
-	// 	RobotRequest.execute(Miller);
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << RED << e.what() << RESET << std::endl;
-	// }
+	try
+	{
+		Piaf.signForm(RobotRequest);
+		Piaf.executeForm(RobotRequest);
+		Miller.executeForm(RobotRequest);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << e.what() << RESET << std::endl;
+	}
 	
-	// try
-	// {
-	// 	Piaf.signForm(makeTree);
-	// 	makeTree.execute(Piaf);
-	// 	makeTree.execute(Miller);
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << RED << e.what() << RESET << std::endl;
-	// }
+	try
+	{
+		Piaf.signForm(makeTree);
+		Piaf.executeForm(makeTree);
+		Miller.executeForm(makeTree);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << e.what() << RESET << std::endl;
+	}
 	return (0);
 }

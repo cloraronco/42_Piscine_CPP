@@ -3,27 +3,25 @@
 int main(void)
 {
 	Bureaucrat	Piaf("Piaf", 15);
+	Bureaucrat	p1(Piaf);
 	Bureaucrat	Miller("Miller", 50);
 	Form		form1("Form 1", 40, 10);
-	Form		form2("Form 2", 40, 60);
 
 	try
 	{
 		std::cout << Piaf;
+		std::cout << p1;
 		std::cout << Miller;
-		std::cout << form1;
-		std::cout << form2;
+		std::cout << form1 << std::endl;
 
-		Piaf++;
-		Piaf++;
-		Miller--;
+		Piaf.incrementation(5);
+		Miller.decrementation(2);
 		Piaf.signForm(form1);
-		Miller.signForm(form2);
+		Piaf.signForm(form1);
+		Miller.signForm(form1);
 
 		std::cout << Piaf;
 		std::cout << Miller;
-		Miller--;
-		Miller--;
 	}
 	catch (std::exception &e)
 	{

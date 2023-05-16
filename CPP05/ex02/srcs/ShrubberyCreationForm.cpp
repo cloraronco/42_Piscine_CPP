@@ -34,26 +34,29 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationF
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	if (!getSigned())
-		throw std::logic_error(executor.getName() + " can't execute a non-signed form.\n");
+		throw std::logic_error(executor.getName() + " can't execute a non-signed form.");
 	if (executor.getGrade() > getGradeToExec())
-		throw std::logic_error(executor.getName() + " can't execute because grade is too low.\n");
-	std::ofstream	output((_target + "_shrubbery").c_str(), std::ios_base::app);
-	
-	output <<	"       .     .     .      +     .      .          ." << std::endl <<
-				"     .       .      .     #       .           ." << std::endl <<
-				"        .      .         ###            .      .      ." << std::endl <<
-				"      .      .   #:. .:## ##:. .:#  .      ." << std::endl <<
-				"          .      .  #### ### ####      .       ." << std::endl <<
-				"       .     #:.    .:# ### #:.    .:#  .        .       ." << std::endl <<
-				"  .              ######### #########        .        ." << std::endl <<
-				"        .     #:.   #### ### ####   .:#   .       ." << std::endl <<
-				"     .     .   #######  ## ##  #######                 ." << std::endl <<
-				"                . ## ##### ##### ##           .      ." << std::endl <<
-				"    .    #:. ...  .:## ### ### ##:.  ... .:#     ." << std::endl <<
-				"      .      ####### ## ##### ## #######      .     ." << std::endl <<
-				"    .    .      #####  #######  #####    .      ." << std::endl <<
-				"            .            000          .     ." << std::endl <<
-				"       .         .   .   000     .        .       ." << std::endl <<
-				"........................O000O........................" << std::endl;
-	output.close();
+		throw std::logic_error(executor.getName() + " can't execute because his grade is too low.");
+	if (getSigned() && (executor.getGrade() <= getGradeToExec()))
+	{
+		std::ofstream	output((_target + "_shrubbery").c_str(), std::ios_base::app);
+		
+		output <<	"       .     .     .      +     .      .          ." << std::endl <<
+					"     .       .      .     #       .           ." << std::endl <<
+					"        .      .         ###            .      .      ." << std::endl <<
+					"      .      .   #:. .:## ##:. .:#  .      ." << std::endl <<
+					"          .      .  #### ### ####      .       ." << std::endl <<
+					"       .     #:.    .:# ### #:.    .:#  .        .       ." << std::endl <<
+					"  .              ######### #########        .        ." << std::endl <<
+					"        .     #:.   #### ### ####   .:#   .       ." << std::endl <<
+					"     .     .   #######  ## ##  #######                 ." << std::endl <<
+					"                . ## ##### ##### ##           .      ." << std::endl <<
+					"    .    #:. ...  .:## ### ### ##:.  ... .:#     ." << std::endl <<
+					"      .      ####### ## ##### ## #######      .     ." << std::endl <<
+					"    .    .      #####  #######  #####    .      ." << std::endl <<
+					"            .            000          .     ." << std::endl <<
+					"       .         .   .   000     .        .       ." << std::endl <<
+					"........................O000O........................" << std::endl;
+		output.close();
+	}
 }

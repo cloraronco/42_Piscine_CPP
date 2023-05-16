@@ -9,7 +9,7 @@ class PresidentialPardonForm : public Form
 		PresidentialPardonForm(void);
 		PresidentialPardonForm(std::string target);
 		PresidentialPardonForm(const PresidentialPardonForm& copy);
-		~PresidentialPardonForm();
+		virtual ~PresidentialPardonForm();
 
 		PresidentialPardonForm&	operator=(const PresidentialPardonForm& obj);
 
