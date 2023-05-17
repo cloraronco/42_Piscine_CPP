@@ -1,6 +1,6 @@
 CC					= c++
 
-CC_FLAGS			= -Wall -Wextra -Werror -std=c++98 -fsanitize=address -g3
+CC_FLAGS			= -Wall -Wextra -Werror -std=c++98 #-fsanitize=address -g3
 
 NAME				= Form
 

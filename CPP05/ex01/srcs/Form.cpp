@@ -7,7 +7,10 @@ Form::Form(void): _name("Unknown"), _signed(false), _gradeToSign(50), _gradeToEx
 	std::cout << GREY << "Form default constructor called" << RESET << std::endl;
 }
 
-Form::Form(std::string name, int gradeToSign, int gradeToExec): _name(name), _signed(false), _gradeToSign(gradeToSign), _gradeToExec(gradeToExec)
+Form::Form(std::string name, int gradeToSign, int gradeToExec): _name(name),
+																_signed(false),
+																_gradeToSign(gradeToSign),
+																_gradeToExec(gradeToExec)
 {
 	if (gradeToSign < 1 || gradeToExec < 1)
 		throw GradeTooHighException();
@@ -16,7 +19,10 @@ Form::Form(std::string name, int gradeToSign, int gradeToExec): _name(name), _si
 	std::cout << GREY << "Form name constructor called" << RESET << std::endl;
 }
 
-Form::Form(const Form &cpy): _name(cpy.getName()), _signed(cpy.getSigned()), _gradeToSign(cpy.getGradeToSign()), _gradeToExec(cpy.getGradeToExec())
+Form::Form(const Form &cpy): _name(cpy.getName()),
+								_signed(cpy.getSigned()),
+								_gradeToSign(cpy.getGradeToSign()),
+								_gradeToExec(cpy.getGradeToExec())
 {
 	*this = cpy;
 	std::cout << GREY << "Form copy constructor called" << RESET << std::endl;
@@ -32,6 +38,7 @@ Form::~Form(void)
 
 Form	&Form::operator=(const Form &cpy)
 {
+	std::cerr << RED << "Can't copy constant variable." << RESET << std::endl;
 	_signed = cpy._signed;
 	return (*this);
 }

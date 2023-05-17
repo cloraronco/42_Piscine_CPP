@@ -2,17 +2,21 @@
 
 /*___________________________CONSTRUCTORS/ DESTRUCTOR____________________________*/
 
-RobotomyRequestForm::RobotomyRequestForm(void): Form("RobotomyRequestForm", 72, 45), _target("Unknown")
+RobotomyRequestForm::RobotomyRequestForm(void): Form("RobotomyRequestForm", 72, 45),
+												_target("Unknown")
 {
 	std::cout << GREY << "RobotomyRequestForm default constructor called" << RESET << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target): Form("RobotomyRequestForm", 72, 45), _target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target): Form("RobotomyRequestForm", 72, 45),
+																_target(target)
 {
 	std::cout << GREY << "RobotomyRequestForm name constructor called" << RESET << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &cpy): Form(cpy.getName(), cpy.getGradeToSign(), cpy.getGradeToExec())
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &cpy): Form(cpy.getName(),
+																				cpy.getGradeToSign(),
+																				cpy.getGradeToExec())
 {
 	*this = cpy;
 	std::cout << GREY << "RobotomyRequestForm copy constructor called" << RESET << std::endl;
@@ -28,6 +32,7 @@ RobotomyRequestForm::~RobotomyRequestForm(void)
 
 RobotomyRequestForm	&RobotomyRequestForm::operator=(const RobotomyRequestForm &obj)
 {
+	std::cerr << RED << "Can't copy constant variable." << RESET << std::endl;
 	_target = obj._target;
 	return (*this);
 }

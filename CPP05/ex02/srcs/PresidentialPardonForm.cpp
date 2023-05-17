@@ -2,17 +2,21 @@
 
 /*___________________________CONSTRUCTORS/ DESTRUCTOR____________________________*/
 
-PresidentialPardonForm::PresidentialPardonForm(void): Form("PresidentialPardonForm", 25, 5), _target("Unknown")
+PresidentialPardonForm::PresidentialPardonForm(void): Form("PresidentialPardonForm", 25, 5),
+														_target("Unknown")
 {
 	std::cout << GREY << "PresidentialPardonForm default constructor called" << RESET << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target): Form("PresidentialPardonForm", 25, 5), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target): Form("PresidentialPardonForm", 25, 5),
+																	_target(target)
 {
 	std::cout << GREY << "PresidentialPardonForm name constructor called" << RESET << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &cpy): Form(cpy.getName(), cpy.getGradeToSign(), cpy.getGradeToExec())
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &cpy): Form(cpy.getName(),
+																						cpy.getGradeToSign(),
+																						cpy.getGradeToExec())
 {
 	*this = cpy;
 	std::cout << GREY << "PresidentialPardonForm copy constructor called" << RESET << std::endl;
@@ -27,6 +31,7 @@ PresidentialPardonForm::~PresidentialPardonForm(void)
 
 PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPardonForm &obj)
 {
+	std::cerr << RED << "Can't copy constant variable." << RESET << std::endl;
 	_target = obj._target;
 	return (*this);
 }

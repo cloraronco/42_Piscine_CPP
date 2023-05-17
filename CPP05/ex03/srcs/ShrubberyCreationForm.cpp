@@ -1,17 +1,21 @@
 #include "../includes/ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(void): Form("ShrubberyCreationForm", 145, 137), _target("Unknown")
+ShrubberyCreationForm::ShrubberyCreationForm(void): Form("ShrubberyCreationForm", 145, 137),
+													_target("Unknown")
 {
 	std::cout << GREY << "ShrubberyCreationForm default constructor called" << RESET << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target): Form("ShrubberyCreationForm", 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target): Form("ShrubberyCreationForm", 145, 137),
+																	_target(target)
 {
 	_target = target;
 	std::cout << GREY << "ShrubberyCreationForm name constructor called" << RESET << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &cpy): Form(cpy.getName(), cpy.getGradeToSign(), cpy.getGradeToExec())
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &cpy): Form(cpy.getName(),
+																						cpy.getGradeToSign(),
+																						cpy.getGradeToExec())
 {
 	*this = cpy;
 	std::cout << GREY << "ShrubberyCreationForm copy constructor called" << RESET << std::endl;
@@ -26,6 +30,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void)
 
 ShrubberyCreationForm	&ShrubberyCreationForm::operator=(const ShrubberyCreationForm &obj)
 {
+	std::cerr << RED << "Can't copy constant variable." << RESET << std::endl;
 	_target = obj._target;
 	return (*this);
 }

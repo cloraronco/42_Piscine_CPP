@@ -33,6 +33,7 @@ Bureaucrat::~Bureaucrat(void)
 
 Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &cpy)
 {
+	std::cerr << RED << "Can't copy constant variable." << RESET << std::endl;
 	_grade = cpy._grade;
 	return (*this);
 }
