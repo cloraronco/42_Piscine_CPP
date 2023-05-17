@@ -8,11 +8,6 @@
 int main(void)
 {
 	Bureaucrat				Piaf("Piaf", 5);
-	// Bureaucrat				Miller("Miller", 149);
-	// PresidentialPardonForm	PPF("PPF");
-	// RobotomyRequestForm		RobotRequest("RobotRequest");
-	// ShrubberyCreationForm	makeTree("makeTree");
-
 
 	try
 	{
@@ -28,6 +23,11 @@ int main(void)
 	{
 		std::cerr << RED << e.what() << RESET << std::endl;
 	}
+
+	// Bureaucrat				Miller("Miller", 149);
+	// PresidentialPardonForm	PPF("PPF");
+	// RobotomyRequestForm		RobotRequest("RobotRequest");
+	// ShrubberyCreationForm	makeTree("makeTree");
 
 	// try
 	// {
