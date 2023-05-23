@@ -1,91 +1,120 @@
-#include "../includes/Bureaucrat.hpp"
+#include "../includes/Convert.hpp"
 
 
 /*___________________________CONSTRUCTORS/ DESTRUCTOR____________________________*/
 
-Bureaucrat::Bureaucrat(void): _name("Unknown"), _grade(150)
+Convert::Convert(void): c(0), i(0), d(0), f(0) 
 {
-	std::cout << GREY << "Bureaucrat default constructor called" << RESET << std::endl;
+	std::cout << GREY << "Convert default constructor called" << RESET << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string name, int grade): _name(name)
+Convert::Convert(const Convert &cpy): c(cpy.c),
+										i(cpy.i),
+										f(cpy.f),
+										d(cpy.d)
 {
-	if (grade < 1)
-		throw GradeTooHighException();
-	if (grade > 150)
-		throw GradeTooLowException();
-	_grade = grade;
-	std::cout << GREY << "Bureaucrat name constructor called" << RESET << std::endl;
+	std::cout << GREY << "Copy constructor called" << RESET << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &cpy): _name(cpy._name), _grade(cpy._grade)
+Convert::~Convert(void)
 {
-	std::cout << GREY << "Bureaucrat copy constructor called" << RESET << std::endl;
-}
-
-Bureaucrat::~Bureaucrat(void)
-{
-	std::cout << GREY << "Bureaucrat destructor called" << RESET << std::endl;
+	std::cout << GREY << "Convert destructor called" << RESET << std::endl;
 }
 
 
 /*___________________________ OVERLOADING OPERATORS________________________________*/
 
-Bureaucrat	&Bureaucrat::operator=(const Bureaucrat &cpy)
+Convert	&Convert::operator=(const Convert &cpy)
 {
-	std::cerr << RED << "Can't copy constant variable." << RESET << std::endl;
-	_grade = cpy._grade;
+	// _grade = cpy._grade;
 	return (*this);
 }
 
-std::ostream	&operator<<(std::ostream& os, Bureaucrat const& obj)
-{
-	os << obj.getName() << ", bureaucrat grade " << obj.getGrade() << "." << std::endl;
-	return (os);
-}
-
-
-/*__________________________________ACCESSORS______________________________________*/
-
-std::string	Bureaucrat::getName() const
-{
-	return(_name);
-}
-
-int			Bureaucrat::getGrade() const
-{
-	return(_grade);
-}
-
+// std::ostream	&operator<<(std::ostream& os, Convert const& obj)
+// {
+// 	os << obj.getName() << ", Convert grade " << obj.getGrade() << "." << std::endl;
+// 	return (os);
+// }
 
 /*________________________________MEMBERS FONCTIONS________________________________*/
 
-void	Bureaucrat::incrementation(int i)
+void	Convert::detect_type(char *arg)
 {
-	if (i < 1)
-		throw std::invalid_argument("Invalid parameter.");
-	else if (_grade - i < 1)
-		throw GradeTooHighException();
-	_grade = _grade - i;
-	std::cout << YELLOW << _name << "'s grade : +" << i << " levels !" << RESET << std::endl; 
+
 }
 
-void	Bureaucrat::decrementation(int i)
+void	Convert::convert_data()
 {
-	if (i < 1)
-		throw std::invalid_argument("Invalid parameter.");
-	else if (_grade + i > 150)
-		throw GradeTooLowException();
-	_grade = _grade + i;
-	std::cout << YELLOW << _name << "'s grade : -" << i << " levels !" << RESET << std::endl; 
+	switch (getType())
+	{
+		case CHAR:
+			i = static_cast<int>(c);
+			d = static_cast<double>(c);
+			f = static_cast<float>(c);
+			break;
+		case INT:
+			c = static_cast<char>(i);
+			d = static_cast<double>(i);
+			f = static_cast<float>(i);
+			break;
+		case DOUBLE:
+			c = static_cast<char>(d);
+			i = static_cast<int>(d);
+			f = static_cast<float>(d);
+			break;
+		case FLOAT:
+			c = static_cast<char>(f);
+			i = static_cast<int>(f);
+			d = static_cast<double>(f);
+			break;
+		default:
+			break;
+	}
 }
 
-const char*	Bureaucrat::GradeTooHighException::what() const throw()
+int Convert::getType() const
 {
-	return ("Grade too high.");
+	return _type;
 }
 
-const char*	Bureaucrat::GradeTooLowException::what() const throw()
+void Convert::setType(int type)
 {
-	return ("Grade too low.");
+	Convert::_type = type;
 }
+/*---------- CHAR TO ----------*/
+
+// int		Convert::chartoint(char c)
+// {
+// 	return(static_cast<int>(c));
+// }
+
+// double	Convert::chartodouble(char c)
+// {
+// 	return(static_cast<double>(c));
+// }
+
+// float	Convert::chartofloat(char c)
+// {
+// 	return(static_cast<double>(c));
+// }
+
+/*---------- INT TO -----------*/
+
+// char	Convert::inttochar(int i)
+// {
+
+// }
+
+// float	Convert::inttofloat(int i)
+// {
+
+// }
+
+// double	Convert::inttodouble(int i)
+// {
+	
+// }
+
+/*---------- DOUBLE TO --------*/
+
+/*---------- FLOAT TO ---------*/

@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include <iostream>
 
 #define RESET "\e[0m"
@@ -11,37 +12,41 @@
 #define MAGENTA "\e[0;36m"
 #define WHITE "\e[0;37m"
 
-class Bureaucrat
+#define CHAR 1 
+#define INT 2
+#define DOUBLE 3
+#define FLOAT 4
+
+class Convert
 {
 	public:
-		Bureaucrat(void);
-		Bureaucrat(std::string name, int grade);
-		Bureaucrat(const Bureaucrat &cpy);
-		~Bureaucrat(void);
+		Convert();
 
-		Bureaucrat	&operator=(const Bureaucrat &cpy);
+		Convert(std::string &_def);
+		Convert(const Convert &convert);
+		~Convert(void);
 
-		class	GradeTooHighException : public std::exception
-		{
-			public:
-				virtual const char* what() const throw();
-		};
-		class	GradeTooLowException : public std::exception
-		{
-			public:
-				virtual const char* what() const throw();
-		};
+		Convert	&operator=(const Convert &cpy);
 
-		void	incrementation(int i);
-		void	decrementation(int i);
+		void	detect_type(char *arg);
+		void	convert_data();
+		void	print_data();
 
-		std::string	getName() const;
-		int			getGrade(void) const;
+		int		chartoint(char c);
+		double	chartodouble(char c);
+		float	chartofloat(char c);
+
+		int getType() const;
+		void setType(int type);
 
 	private:
-		const std::string	_name;
-		int					_grade;
+		char	c;
+		int		i;
+		float	f;
+		double	d;
+		int		_type;
+		std::string	_def;
 
 };
 
-std::ostream	&operator<<(std::ostream& os, Bureaucrat const& obj);
+// std::ostream	&operator<<(std::ostream& os, Convert const& obj);
