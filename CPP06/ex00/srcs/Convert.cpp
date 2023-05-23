@@ -3,15 +3,18 @@
 
 /*___________________________CONSTRUCTORS/ DESTRUCTOR____________________________*/
 
-Convert::Convert(void): c(0), i(0), d(0), f(0) 
+Convert::Convert(void): c(0), i(0), d(0), f(0), _isWrong(false), _type(INVALID), _def("")
 {
 	std::cout << GREY << "Convert default constructor called" << RESET << std::endl;
 }
 
-Convert::Convert(const Convert &cpy): c(cpy.c),
-										i(cpy.i),
-										f(cpy.f),
-										d(cpy.d)
+Convert::Convert(const Convert &convert): c(convert.c),
+										i(convert.i),
+										d(convert.d),
+										f(convert.f),
+										_isWrong(convert._isWrong),
+										_type(convert._type),
+										_def(convert._def)
 {
 	std::cout << GREY << "Copy constructor called" << RESET << std::endl;
 }
@@ -26,21 +29,82 @@ Convert::~Convert(void)
 
 Convert	&Convert::operator=(const Convert &cpy)
 {
-	// _grade = cpy._grade;
+	// if (&cpy)
+	// 	return *this;
+	i = cpy.i;
+	d = cpy.d;
+	f = cpy.f;
+	c = cpy.c;
+	_isWrong = cpy._isWrong;
+	_type = cpy._type;
+	_def = cpy._def;
 	return (*this);
 }
 
-// std::ostream	&operator<<(std::ostream& os, Convert const& obj)
-// {
-// 	os << obj.getName() << ", Convert grade " << obj.getGrade() << "." << std::endl;
-// 	return (os);
-// }
 
 /*________________________________MEMBERS FONCTIONS________________________________*/
 
 void	Convert::detect_type(char *arg)
 {
+	int i = 0;
+	int has_dot = 0;
+	int has_f = 0;
+	int has_letter = 0;
+	int has_num = 0;
+	int has_neg = 0;
+	long defValue = std::strtol(_def.c_str(), NULL, 10);
+	setDef(std::string(arg));
 
+	if (isLiteral(_def) == true)
+	{
+		setType(PSEUDOLIT);
+		return;
+	}
+	while(arg[i])
+	{
+		if (arg[i] == '-' && i == 0)
+			has_neg = 1;
+		else if (std::isdigit(arg[i]))
+			has_num = 1;
+		else if (arg[i] == '.')
+			has_dot = 1;
+		else if (arg[i] == 'f' && i == (int)std::strlen(arg))
+			has_f = 1;
+		if (std::isalpha(arg[i]))
+			has_letter = 1;
+		i++;
+	}
+	if (i == 1)
+	{
+		setType(CHAR);
+		c = atoi(_def.c_str());
+	}
+	else if (has_num == 1 && has_dot == 1 && has_f == 1)
+	{
+		setType(FLOAT);
+		// f = std::stof(_def);
+		// f = static_cast<float>(_def);
+	}
+	else if (has_num == 1 && has_dot == 1 && has_f == 0)
+	{
+		setType(DOUBLE);
+		// d = std::stod(_def);
+	}
+	else if (has_num == 1 && has_dot == 0 && has_f == 0 && has_letter == 0)
+	{
+		setType(INT);
+		// if (std::stol(_def) >= INT_MIN && std::stol(_def) <= INT_MAX) {
+		// if (_def.c_str() >= INT_MIN.c_str() && _def.c_str() <= INT_MAX.c_str())
+		if (defValue >= INT_MIN && defValue <= INT_MAX)
+		{
+			// i = std::stoi(_def);
+			c = i;
+		}
+		else
+			_isWrong = true;
+	}
+	else
+		setType(INVALID);
 }
 
 void	Convert::convert_data()
@@ -72,6 +136,38 @@ void	Convert::convert_data()
 	}
 }
 
+void Convert::getChar() const
+{
+	std::cout << "char: ";
+	if (_type == PSEUDOLIT)
+		std::cout << "impossible" << std::endl;
+	else if (c >= 32 && c <= 126)
+		std::cout << c << std::endl;
+	else
+		std::cout << "Non displayable" << std::endl;
+}
+
+void Convert::getInt() const
+{
+	std::cout << "int: ";
+	if (_type == PSEUDOLIT)
+		std::cout << "impossible" << std::endl;
+}
+
+void Convert::getDouble() const
+{
+	std::cout << "double: ";
+	if (_type == PSEUDOLIT)
+		std::cout << "nan" << std::endl;
+}
+
+void Convert::getFloat() const
+{
+	std::cout << "float: ";
+	if (_type == PSEUDOLIT)
+		std::cout << "nanf" << std::endl;
+}
+
 int Convert::getType() const
 {
 	return _type;
@@ -81,40 +177,37 @@ void Convert::setType(int type)
 {
 	Convert::_type = type;
 }
-/*---------- CHAR TO ----------*/
 
-// int		Convert::chartoint(char c)
-// {
-// 	return(static_cast<int>(c));
-// }
+const std::string &Convert::getDef() const {
+	return _def;
+}
 
-// double	Convert::chartodouble(char c)
-// {
-// 	return(static_cast<double>(c));
-// }
+void Convert::setDef(const std::string &def) {
+	_def = def;
+}
 
-// float	Convert::chartofloat(char c)
-// {
-// 	return(static_cast<double>(c));
-// }
+void Convert::print_data() {
+	getChar();
+	getInt();
+	getDouble();
+	getFloat();
+}
 
-/*---------- INT TO -----------*/
+bool isLiteral(std::string str)
+{
+	if (str == "nan"|| str == "nanf" || str == "+inff" || str == "-inff"
+		|| str == "-inf" || str == "+inf")
+		return true;
+	return false;
+}
 
-// char	Convert::inttochar(int i)
-// {
-
-// }
-
-// float	Convert::inttofloat(int i)
-// {
-
-// }
-
-// double	Convert::inttodouble(int i)
-// {
-	
-// }
-
-/*---------- DOUBLE TO --------*/
-
-/*---------- FLOAT TO ---------*/
+std::string convertLiteralToDouble(std::string str)
+{
+	if (str == "nanf")
+		return "nan";
+	if (str == "+inff")
+		return "+inf";
+	if (str == "-inff")
+		return "-inf";
+	return str;
+}

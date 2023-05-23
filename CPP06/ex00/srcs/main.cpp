@@ -17,6 +17,7 @@ int main(int argc, char **argv)
 	catch (std::exception &e)
 	{
 		std::cerr << RED << e.what() << RESET << std::endl;
+		std::cout << RED << "Conversion aborted. Check back arguments." << RESET << std::endl;
 	}
 	return (0);
 }
