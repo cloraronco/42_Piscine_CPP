@@ -2,7 +2,7 @@ CC					= c++
 
 CC_FLAGS			= -Wall -Wextra -Werror -std=c++98
 
-NAME				= Convert
+NAME				= Conversion_scalaire
 
 OBJS_DIR			= srcs/objs
 
@@ -14,10 +14,10 @@ OBJECTS_PREFIXED	= $(addprefix $(OBJS_DIR)/, $(OBJS))
 
 OBJS				= $(SRCS:.cpp=.o)
 
-SRCS				=	main.cpp \
-						Convert.cpp
+SRCS				=	main.cpp
 
 INC					=	$(INC_DIR)Convert.hpp
+							
 
 all: $(NAME)
 
