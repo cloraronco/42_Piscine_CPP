@@ -17,7 +17,6 @@ OBJS				= $(SRCS:.cpp=.o)
 SRCS				=	main.cpp
 
 INC					=	$(INC_DIR)Convert.hpp
-							
 
 all: $(NAME)
 
@@ -28,13 +27,14 @@ $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)%.cpp Makefile $(INC) $(OBJS_DIR)
-	$(CC) $(CC_FLAGS) -c $< -o $@ -I $(INC_DIR)
+	@$(CC) $(CC_FLAGS) -c $< -o $@ -I $(INC_DIR)
 
 clean:
 	rm -rf $(OBJS_DIR)
 
 fclean: clean
 	rm -f $(NAME)
+
 
 re: fclean all
 

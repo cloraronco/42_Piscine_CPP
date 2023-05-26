@@ -1,11 +1,9 @@
 #pragma once
 
 #include <iostream>
-#include <string>
+#include <iomanip>
 #include <cstdlib>
-#include <cfloat>
-#include <sstream>
-#include <cmath>
+#include <limits>
 
 #define RESET "\e[0m"
 #define GREY "\e[0;30m"

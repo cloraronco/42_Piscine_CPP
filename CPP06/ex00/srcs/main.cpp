@@ -44,22 +44,22 @@ void	putChar(double valueDouble, char *str)
 	else if (valueDouble <= 31 && valueDouble >= 0)
 		std::cout << "Non displayable";
 	else if (valueDouble < 0 || valueDouble >= 127 || !(valueDouble >= 0 || valueDouble <= 0))
-		std::cout << "Impossible";
+		std::cout << "impossible";
 	else
-		std::cout << static_cast<char>(valueDouble);
+		std::cout << "'" << static_cast<char>(valueDouble) << "'";
 	std::cout << std::endl;
 }
 
 void	putInt(double valueDouble, char *str)
 {
 	std::cout << "int: ";
-
 	int	res = static_cast<int>(valueDouble);
+
 	if (!(valueDouble >= 0 || valueDouble <= 0))
-		std::cout << "Impossible";
+		std::cout << "impossible";
 	else if (res == -2147483648 && valueDouble != -2147483648)
-		std::cout << "Impossible";
-	else if (str && str[0] && !isANumber(str[0]))
+		std::cout << "impossible";
+	else if (str && str[0] && !isANumber(str[0]) && !str[1])
 		std::cout << static_cast<int>(str[0]);
 	else
 		std::cout << res;
@@ -68,11 +68,11 @@ void	putInt(double valueDouble, char *str)
 
 void	putFloat(double valueDouble, char *str)
 {
-	std::string	str2(str);
 	float	valueFloat = static_cast<float>(valueDouble);
 	std::cout << "float: ";
+
 	if (str && str[0] && !isANumber(str[0]) && !str[1])
-		std::cout << static_cast<double>(str[0]);
+		std::cout << static_cast<float>(str[0]);
 	else
 		std::cout << valueFloat;
 	std::cout << "f" << std::endl;
@@ -81,7 +81,7 @@ void	putFloat(double valueDouble, char *str)
 void	putDouble(double valueDouble, char *str)
 {
 	std::cout << "double: ";
-	if (str && str[0] && !isANumber(str[0]) && !str[1])
+	if (str && str[0] && !isANumber(str[0]))
 		std::cout << static_cast<double>(str[0]);
 	else
 		std::cout << valueDouble;
@@ -90,6 +90,8 @@ void	putDouble(double valueDouble, char *str)
 
 int	main(int argc, char **argv)
 {
+	std::cout << std::fixed;
+	std::cout.precision(1);
 	if (argc != 2)
 	{
 		std::cout << RED << "Please type one argument." << RESET << std::endl;
