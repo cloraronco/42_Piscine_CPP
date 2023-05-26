@@ -66,5 +66,6 @@ int main(void)
 	std::cout << "Type identification..." << RESET << std::endl;
 	identify(base);
 	identify(*base);
+	delete base;
 	return (0);
 }
