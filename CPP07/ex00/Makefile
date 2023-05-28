@@ -27,7 +27,7 @@ $(OBJS_DIR):
 	@mkdir -p $(OBJS_DIR)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)%.cpp Makefile $(INC) $(OBJS_DIR)
-	$(CC) $(CC_FLAGS) -c $< -o $@ -I $(INC_DIR)
+	@$(CC) $(CC_FLAGS) -c $< -o $@ -I $(INC_DIR)
 
 clean:
 	rm -rf $(OBJS_DIR)

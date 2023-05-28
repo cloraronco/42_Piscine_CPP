@@ -2,7 +2,7 @@ CC					= c++
 
 CC_FLAGS			= -Wall -Wextra -Werror -std=c++98
 
-NAME				= Iter
+NAME				= Array
 
 OBJS_DIR			= srcs/objs
 
@@ -16,7 +16,7 @@ OBJS				= $(SRCS:.cpp=.o)
 
 SRCS				=	main.cpp
 
-INC					=	$(INC_DIR)Iter.hpp
+INC					=	$(INC_DIR)Array.hpp
 
 all: $(NAME)
 
