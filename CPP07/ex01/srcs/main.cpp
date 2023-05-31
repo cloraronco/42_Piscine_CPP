@@ -25,6 +25,9 @@
 //     return (0);
 // }
 
+
+/*_____Subject main_____*/
+
 class Awesome
 {
     public:
@@ -33,10 +36,16 @@ class Awesome
     private:
         int _n;
 };
-std::ostream &operator<<(std::ostream &o, Awesome const& rhs) {o << rhs.get(); return o;}
+std::ostream &operator<<(std::ostream &o, Awesome const& rhs) {
+    o << rhs.get();
+    return o;
+}
 
 template< typename T>
-void print(T const& x) {std::cout << x << std::endl; return;}
+void print(T const& x) {
+    std::cout << x << std::endl;
+    return;
+}
 
 int main()
 {
