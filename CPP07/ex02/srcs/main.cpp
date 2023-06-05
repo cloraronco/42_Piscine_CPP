@@ -3,45 +3,90 @@
 
 int main()
 {
-    const Array<int>			intArray;
-	Array<std::string>			stringArray(5);
-	Array<float>				floatArray(2);
+	const Array<int>	intArray;
 
-	Array<std::string>			peter;
-	const Array<std::string>	peter2;
-
-	
-	stringArray[0] = "Climb";
-	stringArray[1] = "to the summit";
-	stringArray[2] = "then, ";
-	stringArray[3] = "top down";
-	stringArray[4] = "paraglide.";
-	
-	const Array<std::string> michel(stringArray);
-
-	floatArray[0] = 0.42;
-	floatArray[1] = 0.0;
-
+	std::cout << GREY << "---Construction sans parametre---" << RESET << std::endl;
 	std::cout << "intArray size:    " << intArray.size() << std::endl;
-	std::cout << "stringArray size: " << stringArray.size() << std::endl;
 
-	stringArray = michel;
+	std::cout << GREY << "---Construction avec un paramètre de type unsigned int n---" << RESET << std::endl;
+	int	*a = new int[MAX_VAL];
+	// for (int i = 0; i < MAX_VAL; i++)
+    // {
+    //     const int value = rand();
+    //     a[i] = value;
+    // }
+	std::cout << "a: " << *a << std::endl;
 
-	peter = peter2;
-	
+
+	std::cout << GREY << "---Construction avec les parametres---" << RESET << std::endl;
+
+	Array<std::string>	stringArray(5);
+
+	stringArray[0] = "	0";
+	stringArray[1] = "	1";
+	stringArray[2] = "	2";
+	stringArray[3] = "	3";
+	stringArray[4] = "	4";
+
 	try
 	{
 		std::cout << stringArray[0] << std::endl;
-		std::cout << michel[1] << std::endl;
+		std::cout << stringArray[1] << std::endl;
 		std::cout << stringArray[2] << std::endl;
-		std::cout << michel[3] << std::endl;
+		std::cout << stringArray[3] << std::endl;
 		std::cout << stringArray[4] << std::endl;
 		std::cout << stringArray[100] << std::endl;
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << RED <<e.what() << RESET << std::endl;
 	}
+
+	std::cout << GREY << "---Construction par recopie---" << RESET << std::endl;
+
+	Array<std::string> cpyArray(stringArray);
+	cpyArray[0] = "	42";
+
+	try
+	{
+		std::cout << "stringArray[0]: " << stringArray[0] << "" << std::endl;
+		std::cout << "cpyArray[0]: " << cpyArray[0] << "" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED <<e.what() << RESET << std::endl;
+	}
+	std::cout << "cpyArray size: " << cpyArray.size() << std::endl;
+
+	std::cout << GREY << "Copie" << RESET << std::endl;
+	stringArray = cpyArray;
+	try
+	{
+		std::cout << "cpyArray[0]: " << cpyArray[0] << "" << std::endl;
+		std::cout << "stringArray[0]: " << stringArray[0] << "" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED <<e.what() << RESET << std::endl;
+	}
+	std::cout << GREY << "Modification" << RESET << std::endl;
+	stringArray[0] = "Voila";
+	try
+	{
+		std::cout << "stringArray[0]: " << stringArray[0] << "" << std::endl;
+		std::cout << "cpyArray[0]: " << cpyArray[0] << "" << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED <<e.what() << RESET << std::endl;
+	}
+
+
+	std::cout << GREY << "---Autre type---" << RESET << std::endl;
+
+	Array<float>		floatArray(2);
+	floatArray[0] = 0.42;
+	floatArray[1] = 0.0;
 
 	try
 	{
@@ -52,11 +97,15 @@ int main()
 	{
 		std::cerr << e.what() << std::endl;
 	}
-	
+	delete [] a;
 	return (0);
 }
 
+
+
+
 // int main(int, char**)
+// {
 //     Array<int> numbers(MAX_VAL);
 //     int* mirror = new int[MAX_VAL];
 //     srand(time(NULL));

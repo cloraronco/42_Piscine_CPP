@@ -16,7 +16,7 @@ OBJS				= $(SRCS:.cpp=.o)
 
 SRCS				=	main.cpp
 
-INC					=	$(INC_DIR)Whatever.hpp
+INC					=	$(INC_DIR)whatever.hpp
 
 all: $(NAME)
 

@@ -2,6 +2,16 @@
 #include <iostream>
 #include <cstdlib>
 
+#define RESET "\e[0m"
+#define GREY "\e[0;30m"
+#define RED "\e[0;31m"
+#define GREEN "\e[0;32m"
+#define YELLOW "\e[0;33m"
+#define BLUE "\e[0;34m"
+#define PINK "\e[0;35m"
+#define MAGENTA "\e[0;36m"
+#define WHITE "\e[0;37m"
+
 template <typename T> class Array
 {
 	private:
@@ -9,15 +19,13 @@ template <typename T> class Array
 		size_t	_size;
 
 	public:
-//constructors
+//constructors / destructor
 		Array(): _array(NULL), _size(0) {}
 		Array(unsigned int i)
 		{
 			_array = new T[i];
 			_size = (size_t)i;
 		}
-
-//cpy constructor
 		Array(const Array &cpy): _size(cpy._size)
 		{
 			_array = new T[cpy._size];
@@ -25,7 +33,6 @@ template <typename T> class Array
 				_array[i] = cpy[i]; 
 			return ;
 		}
-//destructor
 		~Array()
 		{
 			delete []_array;

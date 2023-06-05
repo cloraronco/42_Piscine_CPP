@@ -1,4 +1,4 @@
-#include "../includes/Whatever.hpp"
+#include "../includes/whatever.hpp"
 
 int main( void )
 {
