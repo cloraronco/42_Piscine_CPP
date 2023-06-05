@@ -61,11 +61,13 @@ int main(void)
 	Base *base;
 	srand(time(0));
 
-	base = generate();
 	std::cout << GREY << "Generate a random type..." << std::endl;
+	base = generate();
 	std::cout << "Type identification..." << RESET << std::endl;
 	identify(base);
 	identify(*base);
+
 	delete base;
+
 	return (0);
 }

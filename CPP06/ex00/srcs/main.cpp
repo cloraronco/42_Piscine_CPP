@@ -81,7 +81,7 @@ void	putFloat(double valueDouble, char *str)
 void	putDouble(double valueDouble, char *str)
 {
 	std::cout << "double: ";
-	if (str && str[0] && !isANumber(str[0]))
+	if (str && str[0] && !isANumber(str[0]) && !str[1])
 		std::cout << static_cast<double>(str[0]);
 	else
 		std::cout << valueDouble;
