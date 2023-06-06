@@ -1,22 +1,25 @@
-#include "../includes/Whatever.hpp"
+#include "../includes/easyfind.hpp"
 
 int main( void )
 {
-    int a = 2;
-    int b = 3;
+	std::list<int>		list;
 
-    ::swap( a, b );
-    std::cout << "a = " << a << ", b = " << b << std::endl;
-    std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
-    std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
+	list.push_back(1);
+	list.push_back(2);
+	list.push_back(3);
+	list.push_back(4);
 
-    std::string c = "chaine1";
-    std::string d = "chaine2";
-
-    ::swap(c, d);
-    std::cout << "c = " << c << ", d = " << d << std::endl;
-    std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
-    std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
-
+	try
+	{
+		easyfind(list, 1);
+		easyfind(list, 2);
+		easyfind(list, 4);
+		easyfind(list, 32);
+		easyfind(list, 3);
+	}
+	catch(const std::exception& e)
+    {
+		std::cerr << e.what() << std::endl;
+    }
     return (0);
 }

@@ -2,7 +2,7 @@ CC					= c++
 
 CC_FLAGS			= -Wall -Wextra -Werror -std=c++98
 
-NAME				= Easy_find
+NAME				= MutantStack
 
 OBJS_DIR			= srcs/objs
 
@@ -16,7 +16,7 @@ OBJS				= $(SRCS:.cpp=.o)
 
 SRCS				=	main.cpp
 
-INC					=	$(INC_DIR)easyfind.hpp
+INC					=	$(INC_DIR)MutantStack.hpp
 
 all: $(NAME)
 
