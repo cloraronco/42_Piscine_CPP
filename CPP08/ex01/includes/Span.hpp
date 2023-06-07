@@ -34,12 +34,20 @@ class Span
 
 		void	addNumber(int nb);
 		void	addNumber(std::vector<int>::iterator X, std::vector<int>::iterator N);
-	
 
 		unsigned int	shortestSpan();
 		unsigned int	longestSpan();
-
-
+	
+		class	DequeFullException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
+		class	SpanException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw();
+		};
 
 };
 
