@@ -42,7 +42,7 @@ void	Span::addNumber(int nb) {
 
 void	Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator X)
 {
-	while (begin != X)
+	while (begin < X)
 	{
 		if ((unsigned int)(array.size()) <= static_cast<size_t>(_N))
 		{
