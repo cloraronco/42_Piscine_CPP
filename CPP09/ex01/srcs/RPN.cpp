@@ -1,5 +1,7 @@
 #include "../includes/RPN.hpp"
 
+/*------------ Constructor / Destructor --------------*/
+
 RPN::RPN() {}
 
 RPN::RPN(std::string str)
@@ -13,7 +15,7 @@ RPN::RPN(std::string str)
 		{
 			if (!isdigit(*it) && *it != '+' && *it != '-' && *it != '*' && *it != '/')
 			{
-				std::cout << "Error" << std::endl;
+				std::cerr << RED << "Error" << RESET << std::endl;
 				std::exit(1);
 			}
 		}
@@ -21,14 +23,16 @@ RPN::RPN(std::string str)
 	}
 }
 
-RPN::RPN(RPN const &cpy)
-{
+RPN::RPN(RPN const &cpy) {
 	*this = cpy;
 }
 
 RPN::~RPN() {}
 
-RPN &RPN::operator=(RPN const &rpn)
+
+/*-------------- Overloading operator ----------------*/
+
+RPN	&RPN::operator=(RPN const &rpn)
 {
 	if (this != &rpn)
 	{
@@ -37,7 +41,10 @@ RPN &RPN::operator=(RPN const &rpn)
 	return (*this);
 }
 
-void RPN::calculate()
+
+/*---------------- Member functions ------------------*/
+
+void	RPN::calculate()
 {
 	std::string::iterator it = this->_str.begin();
 	while (it != this->_str.end())
@@ -57,7 +64,7 @@ void RPN::calculate()
 		{
 			if (this->_values.size() < 2)
 			{
-				std::cout << "Error" << std::endl;
+				std::cerr << RED << "Error" << RESET << std::endl;
 				return;
 			}
 			int a = this->_values.top();
@@ -74,7 +81,7 @@ void RPN::calculate()
 			{
 				if (a == 0)
 				{
-					std::cout << "Error" << std::endl;
+					std::cerr << RED << "Error" << RESET << std::endl;
 					return;
 				}
 				this->_values.push(b / a);
@@ -85,7 +92,7 @@ void RPN::calculate()
 	}
 	if (this->_values.size() != 1)
 	{
-		std::cout << "Error" << std::endl;
+		std::cerr << RED << "Error" << RESET << std::endl;
 		return;
 	}
 	std::cout << this->_values.top() << std::endl;

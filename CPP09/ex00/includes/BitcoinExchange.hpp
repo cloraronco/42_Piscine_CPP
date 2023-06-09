@@ -19,18 +19,19 @@
 
 class BitcoinExchange
 {
-	private:
-		std::map<std::string, double> _rates;
-		static bool _is_valid_date(const std::string &date);
-		static bool _is_valid_rate(const std::string &date);
-
 	public:
 		BitcoinExchange(void);
-		BitcoinExchange(const BitcoinExchange &src);
+		BitcoinExchange(const BitcoinExchange &cpy);
 		BitcoinExchange(std::ifstream &file);
 		~BitcoinExchange(void);
 
 		BitcoinExchange &operator=(const BitcoinExchange &rhs);
 
-		void process(const std::string &line);
+		void	process(const std::string &line);
+
+	private:
+		std::map<std::string, double> _rates;
+		static bool	_is_valid_date(const std::string &date);
+		static bool	_is_valid_rate(const std::string &date);
+
 };
