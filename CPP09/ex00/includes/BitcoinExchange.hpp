@@ -1,13 +1,11 @@
 #pragma once
 #include <iostream>
 #include <fstream>
-#include <string>
-#include <algorithm>
 #include <map>
-#include <climits>
-#include <vector>
-#include <cstdio>
-#include <unistd.h>
+#include <string>
+#include <ctime>
+#include <iomanip>
+#include <cstdlib>
 
 #define RESET "\e[0m"
 #define GREY "\e[0;30m"
@@ -22,35 +20,17 @@
 class BitcoinExchange
 {
 	private:
-		int	_N;
+		std::map<std::string, double> _rates;
+		static bool _is_valid_date(const std::string &date);
+		static bool _is_valid_rate(const std::string &date);
 
 	public:
-		std::vector<int>	array;
 		BitcoinExchange(void);
-		BitcoinExchange(unsigned int N);
-		BitcoinExchange(const BitcoinExchange &cpy);
-		virtual ~BitcoinExchange();
+		BitcoinExchange(const BitcoinExchange &src);
+		BitcoinExchange(std::ifstream &file);
+		~BitcoinExchange(void);
 
-		BitcoinExchange	&operator=(const BitcoinExchange &obj);
-		unsigned int	getSize(void) const;
+		BitcoinExchange &operator=(const BitcoinExchange &rhs);
 
-		void	addNumber(int nb);
-		void	addNumber(std::vector<int>::iterator X, std::vector<int>::iterator N);
-
-		unsigned int	shortestBitcoinExchange();
-		unsigned int	longestBitcoinExchange();
-	
-		class	DequeFullException : public std::exception
-		{
-			public:
-				virtual const char* what() const throw();
-		};
-		class	BitcoinExchangeException : public std::exception
-		{
-			public:
-				virtual const char* what() const throw();
-		};
-
+		void process(const std::string &line);
 };
-
-std::ostream&	operator<<(std::ostream& os, BitcoinExchange const& obj);

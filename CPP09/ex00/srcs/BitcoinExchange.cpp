@@ -1,90 +1,105 @@
 #include "../includes/BitcoinExchange.hpp"
 
-/*_______________________Constructors / Destructor_______________________*/
+BitcoinExchange::BitcoinExchange(void) {}
 
-BitcoinExchange::BitcoinExchange(): _N(0){}
-
-BitcoinExchange::BitcoinExchange(unsigned int N) {
-	_N = N;
+BitcoinExchange::BitcoinExchange(const BitcoinExchange &src){
+    *this = src;
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange &cpy): _N(cpy._N), array(cpy.array) {
-	// *this = cpy;
-}
-
-BitcoinExchange::~BitcoinExchange() {}
-
-BitcoinExchange&	BitcoinExchange::operator=(const BitcoinExchange &obj) {
-	array = obj.array;
-	_N = obj._N;
-	return (*this);
-}
-
-/*_______________________Operator / Get_______________________*/
-
-std::ostream&	operator<<(std::ostream& os, BitcoinExchange const& obj) {
-	os << "Array size: [" << obj.getSize() << "]" << std::endl;
-	return (os);
-}
-
-unsigned int	BitcoinExchange::getSize(void) const {
-	return (_N);
-}
-
-/*_______________________Member functions_______________________*/
-
-void	BitcoinExchange::addNumber(int nb) {
-	if (array.size() < static_cast<std::vector<int>::size_type>(_N))
-		array.push_back(nb);
-	else
-		throw DequeFullException();
-}
-
-void	BitcoinExchange::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator X)
+BitcoinExchange::BitcoinExchange(std::ifstream &file)
 {
-	while (begin < X)
-	{
-		if ((unsigned int)(array.size()) <= static_cast<size_t>(_N))
-		{
-			array.push_back(*begin);
-		}
-		begin++;
-	}
-	if (begin != X)
-		throw std::logic_error("Array already full.");
+    std::string line;
+    std::getline(file, line);
+    while (file.good())
+    {
+        std::getline(file, line);
+        if (line.length() > 0)
+        {
+            std::string date = line.substr(0, line.find_first_of(','));
+            std::string rate = line.substr(line.find_first_of(',') + 1);
+            if (!_is_valid_date(date) || !_is_valid_rate(rate) || atof(rate.c_str()) < 0)
+            {
+                std::cout << "Error: bad input => " << line << std::endl;
+                std::exit(1);
+            }
+            this->_rates[date] = atof(rate.c_str());
+        }
+    }
 }
 
-unsigned int	BitcoinExchange::shortestBitcoinExchange(void) {
-	if (array.size() < 2)
-		throw BitcoinExchangeException();
-	std::sort(array.begin(), array.end());
-	unsigned int	gap = UINT_MAX;
-	for (size_t i = 0; i < array.size() - 1; i++)
-	{
-		unsigned int tmp = array[i + 1] - array[i];
-		if (tmp < gap)
-			gap = tmp;
-	}
-	return (gap);
-}
+BitcoinExchange::~BitcoinExchange(void) {}
 
-unsigned int	BitcoinExchange::longestBitcoinExchange(void) {
-	if (array.size() < 2)
-		throw BitcoinExchangeException();
-	int	min = *std::min_element(array.begin(), array.end());
-	int	max = *std::max_element(array.begin(), array.end());
-	return (max - min);
-}
-
-
-/*__________Exceptions___________*/
-
-const char* BitcoinExchange::DequeFullException::what() const throw()
+BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &rhs)
 {
-	return "Exception: DequeFullException";
+    if (this != &rhs)
+    {
+        this->_rates = rhs._rates;
+    }
+    return (*this);
 }
 
-const char* BitcoinExchange::BitcoinExchangeException::what() const throw()
+bool BitcoinExchange::_is_valid_date(const std::string &date)
 {
-	return "BitcoinExchangeException: at least 2 numbers are required.";
+    struct tm tm;
+    char *time = strptime(date.c_str(), "%Y-%m-%d", &tm);
+    if (!time || *time)
+        return (false);
+    return (true);
+}
+
+bool BitcoinExchange::_is_valid_rate(const std::string &rate)
+{
+    const std::string pattern("^[0-9]+(\\.[0-9]+)?$");
+    const std::string::size_type len = rate.length();
+
+    // Vérifier si la chaîne correspond au modèle
+    if (len == 0)
+        return false;
+
+    // Vérifier caractère par caractère
+    for (std::string::size_type i = 0; i < len; i++)
+    {
+        const char ch = rate[i];
+        if (!(isdigit(ch) || ch == '.'))
+            return false;
+    }
+
+    // Vérifier le format du point décimal
+    const std::string::size_type dotPos = rate.find('.');
+    if (dotPos != std::string::npos && dotPos == len - 1)
+        return false;
+
+    return true;
+}
+
+void BitcoinExchange::process(const std::string &line)
+{
+    if (line.length() == 0)
+        return;
+    std::string date = line.substr(0, line.find_first_of('|') - 1);
+    std::string rate = line.substr(line.find_first_of('|') + 2);
+    if (!_is_valid_date(date) || !_is_valid_rate(rate))
+    {
+        std::cout << "Error: bad input => " << line << std::endl;
+        return;
+    }
+    double nb = atof(rate.c_str());
+    if (nb < 0)
+    {
+        std::cout << "Error: not a positive number." << std::endl;
+        return;
+    }
+    if (nb > 1000)
+    {
+        std::cout << "Error: too large number." << std::endl;
+        return;
+    }
+
+    std::map<std::string, double>::iterator it = this->_rates.upper_bound(date);
+    if (it != this->_rates.begin())
+    {
+        --it;
+    }
+
+    std::cout << date << " => " << rate << " = " << (nb * it->second) << std::endl;
 }

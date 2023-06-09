@@ -1,132 +1,30 @@
 #include "../includes/BitcoinExchange.hpp"
 
-void	check_line(std::string str)
+int main(int argc, char **argv)
 {
-	for (int i = 0; str[i]; i++)
-	{
-		while (str[i] < 4)
-		{
-			if (!isdigit(str[i]))
-			{
-				std::cerr << "Error: bad input" << std::endl;
-				return ;
-			}
-		}
-		if (i == 4 && str[i] != '-')
-		{
-			std::cerr << "Error: bad input" << std::endl;
-			return ;
-		}
-	}
-}
+    if (argc != 2)
+    {
+        std::cout << "Usage: ./btc path/to/file" << std::endl;
+        return (1);
+    }
 
-int main(int ac, char **av)
-{
-	if (ac != 2)
-	{
-		std::cerr << "error: could not open file" << std::endl;
-		return (0);
-	}
-	std::fstream	file;
-	file.open(av[1], std::ios::in);
-	if (file.is_open())
-	{
-		std::string str;
-		while (getline(file,str))
-		{
-			std::string format("%d/%m/%Y");
-			std::date d;
-			d = parse_date(str, format, svp);
-			check_line(str);
-		}
-	}
-	else
-		std::cerr << "Not a file" << std::endl;
+    std::ifstream input_file(argv[1]);
+    std::ifstream db_file("data/data.csv");
+    if (!input_file.is_open() || !db_file.is_open())
+    {
+        std::cout << "Error: file not found" << std::endl;
+        return (1);
+    }
 
+    BitcoinExchange exchange(db_file);
 
-
-	// check_file();
-	// BitcoinExchange sp = BitcoinExchange(5);
-
-	// std::cout << "---Main test---" << std::endl;
-	// try
-	// {
-	// 	sp.addNumber(6);
-	// 	sp.addNumber(3);
-	// 	sp.addNumber(17);
-	// 	sp.addNumber(9);
-	// 	sp.addNumber(11);
-	// 	std::cout << GREEN << sp.shortestBitcoinExchange() << RESET << std::endl;
-	// 	std::cout << GREEN << sp.longestBitcoinExchange() << RESET << std::endl;
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << RED << e.what() << RESET << std::endl;
-	// }
-
-
-	// /*___________________________________________________________________________*/
-
-	// std::cout << "---Oversize test---" << std::endl;
-	// try
-	// {
-	// 	sp.addNumber(6);
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << RED << e.what() << RESET << std::endl;
-	// }
-
-
-	// /*___________________________________________________________________________*/
-
-	// BitcoinExchange sp1 = BitcoinExchange(5);
-
-	// std::cout << "---BitcoinExchange exceptions---" << std::endl;
-	// try
-	// {
-	// 	sp1.addNumber(6);
-	// 	std::cout << GREEN << sp1.shortestBitcoinExchange() << RESET << std::endl;
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << RED << e.what() << RESET << std::endl;
-	// }
-
-	// try
-	// {
-	// 	std::cout << GREEN << sp1.longestBitcoinExchange() << RESET << std::endl;
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << RED << e.what() << RESET << std::endl;
-	// }
-
-
-	// /*___________________________________________________________________________*/
-
-	// std::cout << "---Range of iterators test---" << std::endl;
-
-	// std::vector<int> v;
-	// std::srand(time(NULL));
-	// int size = 1000000;
-	// for(int i = 0; i < size; i++)
-	// {
-	// 	v.push_back(rand());
-	// }
-
-	// BitcoinExchange sp5 = BitcoinExchange(size);
-
-	// try
-	// {
-	// 	sp5.addNumber(v.begin(), v.end());
-	// 	std::cout << GREEN << sp5.shortestBitcoinExchange() << RESET << std::endl;
-	// 	std::cout << GREEN << sp5.longestBitcoinExchange() << RESET << std::endl;
-	// }
-	// catch(const std::exception& e)
-	// {
-	// 	std::cerr << RED << e.what() << RESET << std::endl;
-	// }
-
-	return 0;
+    std::string line;
+    std::getline(input_file, line);
+    while (input_file.good())
+    {
+        std::getline(input_file, line);
+        if (line.empty())
+            continue;
+        exchange.process(line);
+    }
 }
