@@ -1,6 +1,3 @@
-# 42_Piscine_CPP
-This project allows to acquire a strong foundation in the C++ language.
-
 # CPP00
 Namespaces, classes, member functions, stdio streams, initialization lists, static, const, and some other basic stuff.
 # CPP01
